@@ -1,0 +1,4 @@
+Hey there i am file random.
+
+topics 
+- classes,inheritance/prototype chaining,promise,callbacks,callback hell,async await,creating own promise
