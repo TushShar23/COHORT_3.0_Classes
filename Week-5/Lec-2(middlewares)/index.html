@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="text" name="" id="fnum" placeholder="fist number">
+    <input type="text" name="" id="snum" placeholder="second number">
+    <button id="result">RESULT</button>
+</body>
+
+<script>
+    const btn = document.querySelector("#result");
+    
+    btn.addEventListener("click",(e)=>{
+
+    axios.post("http://localhost:3000/sum",{
+        a : document.querySelector("#fnum").value,
+        b : document.querySelector("#snum").value
+    })
+
+    })
+
+    // i have created my first fullstack application. Here i have used axios,cors,body-parser(express.json()),express,html
+    // axios for sending request to the backend,cors for cross origin communication between backend and frontend,express.json() for parsing the data in json format.
+
+    //Cors.js is the backend of this frontend
+</script>
+</html>
