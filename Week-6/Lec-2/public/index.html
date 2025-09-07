@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication App</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: poppins;
+        }
+        body{
+            background-color: rgb(26, 3, 48);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main-head{
+            font-size: 60px;
+            padding: 0.5vw 0.5vw;
+            border: 4px solid black;
+            margin-top: 1rem;
+        }
+        .actions{
+            display: flex;
+            flex-direction: row;
+            gap: 3rem;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .box{
+            margin-top: 3rem;
+            padding: 1vw 1vw;
+            border: 4px solid white;
+            display: flex;
+            flex-direction: column;
+            gap:0.5rem;
+            align-items: center;
+            font-size: 25px;
+            color: rgb(192, 241, 94);
+            height: auto;
+            width: 30vw;
+
+        }
+        #fname1{
+            width: auto;
+            height: 30px;
+            font-size: 1.2vw;
+            text-align: center;
+        }
+        #lname1{
+            width: auto;
+            height: 30px;
+            font-size: 1.2vw;
+            text-align: center;
+        }
+        #fname2{
+            width: auto;
+            height: 30px;
+            font-size: 1.2vw;
+            text-align: center;
+        }
+        #lname2{
+            width: auto;
+            height: 30px;
+            font-size: 1.2vw;
+            text-align: center;
+        }
+        #uname1,#uname2{
+            width: auto;
+            height: 30px;
+            font-size: 1.2vw;
+            text-align: center;
+        }
+
+        .btn{
+            height: 32px;
+            width: 75px;
+            font-size: 15px;
+            font-weight: bold;
+            background-color: yellow;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .info{
+            color: white;
+        }
+    
+
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <h1 class="main-head">Authenzy : Full stack authentication app</h1>
+
+    <div class="actions">
+
+        <div class="box">
+            <label for="fname">First Name :</label>
+            <input type="text" name="fname" id="fname1">
+        
+            <label for="lname">Last Name :</label>
+            <input type="text" name="lname" id="lname1">
+
+            <label for="lname">Username :</label>
+            <input type="text" name="uname" id="uname1">
+            <!-- <br> -->
+        <button id="Sign_Up" class="btn">SIGN UP</button>
+    </div>
+
+    <div class="box">
+        <label for="fsname">First Name :</label>
+        <input type="text" name="fsname" id="fname2">
+    
+        <label for="lsname">Last Name :</label>
+        <input type="text" name="lsname" id="lname2">
+
+        <label for="lname">Username :</label>
+        <input type="text" name="uname" id="uname2">
+    
+        <button id="Sign_in" class="btn">SIGN IN</button>
+    </div>
+
+    </div>
+    
+   
+
+    <div class="info"></div>
+
+</body>
+<script>
+    const signup = document.querySelector("#Sign_Up");
+    const signin = document.querySelector("#Sign_in");
+
+    signup.addEventListener("click",async(e)=>{
+        let username = document.querySelector("#uname1").value;
+        let First_name = document.querySelector("#fname1").value;
+        let Last_name = document.querySelector("#lname1").value;
+
+        await axios.post("http://localhost:3000/signup",{
+            username:username,
+            First_name:First_name,
+            Last_name:Last_name
+        });
+        // we have async await coz axios returns a promise object
+        alert("User signed up! ");
+
+        document.querySelector("#uname1").value=" ";
+        document.querySelector("#fname1").value=" ";
+        document.querySelector("#lname1").value=" ";
+
+    })
+
+    // when we send the /signin request then it returns us the token but where do we store it so that in each /me request basically when user is logged in we don't send token again and again.So for that purpose we will use LOCALSTORAGE-storage system of browser(can handle only small amt of data approx(5-10mb)).
+
+    async function loadData(){
+        const infodiv = document.querySelector(".info");
+        const response = await axios.get("http://localhost:3000/me",{
+            headers:{
+                token:localStorage.getItem("token")
+            }
+        })
+        infodiv.innerHTML = response.data.username + " " + response.data.First_name + " " + response.data.Last_name
+        
+        console.log(response.data)
+    }
+
+
+
+    signin.addEventListener("click",async(e)=>{
+        let username1 = document.querySelector("#uname2").value;
+        let First_name1 = document.querySelector("#fname2").value;
+        let Last_name1 = document.querySelector("#lname2").value;
+
+        const response = await axios.post("http://localhost:3000/signin",{
+            username:username1,
+            First_name:First_name1,
+            Last_name:Last_name1
+        })
+
+        alert("User signed in successfully!");
+
+        console.log(response);
+        
+        // now we will store the token which we get in response.
+        localStorage.setItem("token",response.data.token)
+
+        loadData();
+        // this will load the user info on the frontend.
+    })
+
+    
+    
+
+    
+</script>
+</html>
