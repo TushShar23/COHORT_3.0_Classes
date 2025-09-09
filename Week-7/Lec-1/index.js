@@ -3,28 +3,170 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
+const mongoose = require('mongoose');
 const {UserModel,TodoModel} = require('./Db');// we exported our models remember.Here we will use those models to represent the specific collection
+const JWT_SECRET = "sdjghahgohouhiuoas!@#U*^(&^(&$(HIHFIAH`2"
+
+mongoose.connect("mongodb+srv://Tushar:kxzkEivZeOWOZtso@myprojectscluster.tztrggh.mongodb.net/Todo-app-database")
+// till .net/ its your cluster address but after that you need to tell it which database you want to put data and all.
 
 const app = express();
+
+// this is authentication function means it will be called in all the routes/requests after user has signed in.
+
+async function authentication(req,res,next){
+    // coz we are making db calls so all these functions are async in nature.
+    const token = req.headers.token;
+    const decodeToken = jwt.verify(token,JWT_SECRET);
+
+    try {
+        const user = await UserModel.findOne({
+            userId : decodeToken._id
+        })
+
+        if(user){
+            req.userId = decodeToken._id
+            res.json({
+                Message:"Inserted"
+            })
+            console.log(req.userId)
+            next();
+        }
+        else{
+            res.status(403).json({
+                Message:"Invalid credentials"
+            })}
+
+        } 
+    catch (err) {
+        console.error("Error:",err)
+        res.status(500).json({
+            Message:"Something went in authentication process"
+        })
+
+    }
+    // user has signed in and he is requesting the let say all the todos
+    
+}
 
 app.use(express.json())
 app.use(cors())
 // we will define 4 routes
 
-app.post("/signup",async(req,res)=>{
+app.post("/signup",(req,res)=>{
+
     const username = req.body.username;
     const role = req.body.role;
     const age = parseInt(req.body.age);
     const name = req.body.name;
     // we were first storing the data in the global array which was not the correct way as a BACKEND should be STATELESS.
 
+   // we are using promises here but later we'll use async await
+
+   // as we know database methods return promises so..
+
+    UserModel.insertOne({
+        username: username,// we cannot have same username users
+        role: role,
+        age: age,
+        name: name
+    })
+    .then(()=>{
+        res.json({
+            Message:"User Signed Up successfully!"
+        })
+    })
+    .catch((err)=>{
+        console.error("Signing Up error: ",err);
+        res.status(500).json({
+            Message:"Something went wrong"
+        })
+    })
+
+
 });
 
-app.post("/signin",);
+app.post("/signin",async(req,res)=>{
+    // user signed up and now it is signing in means using its credentitals we will check whether user is in DB or not if it is then send TOKEN else not
+    
+    const username = req.body.username;
+
+    try{
+
+        const user = await UserModel.findOne({
+            username: username
+        })
+
+        console.log(user);
+
+        if(user){
+            const token = jwt.sign({
+                id : user._id 
+                // this id attribute is nothing but the id provided by the database itself to identify unique user.
+                // 
+            },JWT_SECRET)
+            res.json({
+                token : token
+            })
+        }
+        else{
+            res.status(403).json({
+                Message:"Invalid Credentials"
+            })
+        }
+        
+    }
+
+    catch(err){
+        console.error("Signing in Error: ",err)
+        res.status(500).json({
+            Message:"Something went wrong"
+        })
+    }
+
+    
+});
 
 
 // user needs to be authenticated first for putting todo
-app.post("/todo",)
+app.post("/todo",authentication,async(req,res)=>{
+    // insert a todo.
+    const title = req.body.title;
+    const done = Boolean(req.body.done);
+    const userId = req.body.userId 
 
-// user needs to be authenticated first for seeing all the todos
-app.get("/todos",)
+    try {
+        await TodoModel.insertOne({
+            title: title,
+            done: done,
+            userId: userId
+        })
+
+        res.json({
+            Message:"Todo inserted successfully"
+        })
+
+        
+    } catch (error) {
+        console.error("Error occured while inserting todo: ",err);
+        res.json({
+            Message:"Something went wrong while inserting todo"
+        })
+    }
+
+    
+})
+
+// // user needs to be authenticated first for seeing all the todos
+app.get("/todos",authentication,async(req,res)=>{
+    console.log(req.userId)
+    const todoList = await TodoModel.findById(req.userId)
+
+    console.log(todoList)
+})
+
+
+
+app.listen(3000,()=>{
+    console.log("server started");
+})

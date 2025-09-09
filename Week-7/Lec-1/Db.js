@@ -8,17 +8,17 @@ const type = mongoose.Schema.Types;
 // we need to define schemas
 
 const User = new Schema({
-    username: type.String,
-    role: type.String,
-    age: type.Int32,
-    name: type.String
+    username: {type:String,unique:true},
+    role: String,
+    age: type.Int32,// because schema datatypes are js constructor so Int32 is not a js constructor instead of this we can use   age: Number it will store in BSON like Int32
+    name: String
 })
 // Here we have defined user schema
 
 
 const Todo = new Schema({
     title: String,
-    done: type.Boolean,
+    done: Boolean,
     userId: ObjectId
 })
 // Here we have defined Todo schema
