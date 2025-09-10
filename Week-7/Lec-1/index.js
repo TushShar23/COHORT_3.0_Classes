@@ -2,7 +2,6 @@
 
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const cors = require('cors');
 const mongoose = require('mongoose');
 const {UserModel,TodoModel} = require('./Db');// we exported our models remember.Here we will use those models to represent the specific collection
 const JWT_SECRET = "sdjghahgohouhiuoas!@#U*^(&^(&$(HIHFIAH`2"
@@ -14,21 +13,26 @@ const app = express();
 
 // this is authentication function means it will be called in all the routes/requests after user has signed in.
 
+// we expect the token which we sent to the user when user signed in for future calls and response.
 async function authentication(req,res,next){
     // coz we are making db calls so all these functions are async in nature.
     const token = req.headers.token;
     const decodeToken = jwt.verify(token,JWT_SECRET);
+    console.log(decodeToken);
 
     try {
         const user = await UserModel.findOne({
             userId : decodeToken._id
         })
 
+        console.log(user)
+
         if(user){
+            // we have created a new field userId for populating req object
             req.userId = decodeToken._id
-            res.json({
-                Message:"Inserted"
-            })
+            // res.json({
+            //     Message:"Inserted"
+            // })
             console.log(req.userId)
             next();
         }
@@ -50,7 +54,6 @@ async function authentication(req,res,next){
 }
 
 app.use(express.json())
-app.use(cors())
 // we will define 4 routes
 
 app.post("/signup",(req,res)=>{
@@ -79,7 +82,7 @@ app.post("/signup",(req,res)=>{
     .catch((err)=>{
         console.error("Signing Up error: ",err);
         res.status(500).json({
-            Message:"Something went wrong"
+            Message:"Something went wrong OR USER ALREADY EXISTS"
         })
     })
 
@@ -100,8 +103,10 @@ app.post("/signin",async(req,res)=>{
         console.log(user);
 
         if(user){
+            const Uid = user._id;// this is the userId but it is an object of class ObjectId of mongoDB we need to convert it to string
             const token = jwt.sign({
-                id : user._id 
+                id : Uid.toString()// now we have converted that ObjectId into string
+
                 // this id attribute is nothing but the id provided by the database itself to identify unique user.
                 // 
             },JWT_SECRET)
@@ -115,7 +120,7 @@ app.post("/signin",async(req,res)=>{
             })
         }
         
-    }
+    } 
 
     catch(err){
         console.error("Signing in Error: ",err)
@@ -128,7 +133,7 @@ app.post("/signin",async(req,res)=>{
 });
 
 
-// user needs to be authenticated first for putting todo
+// user needs to be authenticated first for putting todo.This is authentication request.
 app.post("/todo",authentication,async(req,res)=>{
     // insert a todo.
     const title = req.body.title;
@@ -157,13 +162,19 @@ app.post("/todo",authentication,async(req,res)=>{
     
 })
 
-// // user needs to be authenticated first for seeing all the todos
+// // user needs to be authenticated first for seeing all the todos.This is authenticated request
 app.get("/todos",authentication,async(req,res)=>{
-    console.log(req.userId)
-    const todoList = await TodoModel.findById(req.userId)
+    const results = await TodoModel.find({
+        uId: req.userId
+    })
 
-    console.log(todoList)
+    res.json({
+        results
+    })
+    
 })
+
+// In endpoints where we are authenticating user first AND ALSO IN AUTH MIDDLEWARE    WE NEED TO USE THE ORIGINAL ID THAT IS ObjectId datatype of mongoDb.See when we are SIGNING JWT we need to convert ObjectId into STRING but when we are authenticating WE NEED TO USE THE ORIGINAL ObjectId object else auth middleware gives error and SO in (REQ.USERID = DECODETOKEN._id),_id is the ORIGINAL ID given by the mongoDb to the user.
 
 
 
