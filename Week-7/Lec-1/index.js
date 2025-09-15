@@ -6,7 +6,26 @@ const mongoose = require('mongoose');
 const {UserModel,TodoModel} = require('./Db');// we exported our models remember.Here we will use those models to represent the specific collection
 const JWT_SECRET = "sdjghahgohouhiuoas!@#U*^(&^(&$(HIHFIAH`2"
 
-mongoose.connect("")
+mongoose.connect("mongodb+srv://Tushar:kxzkEivZeOWOZtso@myprojectscluster.tztrggh.mongodb.net/Todo-app-database")
+// .then(async () => {
+//     console.log("Connected");
+
+//     const indexes = await UserModel.collection.indexes();
+//     console.log("Current indexes:", indexes);
+
+//     if (indexes.some(i => i.name === "email_1")) {
+//       await UserModel.collection.dropIndex("email_1");
+//       console.log("email_1 index removed");
+//     }
+
+//     process.exit();
+//   })
+//   .catch(err => console.error(err));
+
+
+// the above code is used to delete/drop a specific index from our "users" collection.9
+
+
 // till .net/ its your cluster address but after that you need to tell it which database you want to put data and all.
 
 const app = express();
@@ -56,7 +75,7 @@ async function authentication(req,res,next){
 app.use(express.json())
 // we will define 4 routes
 
-app.post("/signup",(req,res)=>{
+app.post("/signup",async(req,res)=>{
 
     const username = req.body.username;
     const role = req.body.role;
@@ -68,7 +87,7 @@ app.post("/signup",(req,res)=>{
 
    // as we know database methods return promises so..
 
-    UserModel.insertOne({
+    await UserModel.insertOne({
         username: username,// we cannot have same username users
         role: role,
         age: age,
@@ -164,7 +183,7 @@ app.post("/todo",authentication,async(req,res)=>{
 
 // // user needs to be authenticated first for seeing all the todos.This is authenticated request
 app.get("/todos",authentication,async(req,res)=>{
-    const results = await TodoModel.find({
+    const results = await TodoModel.findOne({
         uId: req.userId
     })
 

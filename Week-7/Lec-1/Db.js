@@ -8,10 +8,10 @@ const type = mongoose.Schema.Types;
 // we need to define schemas
 
 const User = new Schema({
-    username: {type:String,unique:true},
-    role: String,
-    age: type.Int32,// because schema datatypes are js constructor so Int32 is not a js constructor instead of this we can use   age: Number it will store in BSON like Int32
-    name: String
+   username: {type:String,unique:true},
+   role: String,
+   age: type.Int32,
+   name: String
 })
 // Here we have defined user schema
 
@@ -25,6 +25,8 @@ const Todo = new Schema({
 
 const UserModel = mongoose.model('users',User);
 const TodoModel = mongoose.model('todos',Todo);
+
+
 
 //humne ab inn schemas ka memory mei ek model bana liya jo ki hum use karenge hmaare routes wale folder mei.Hume kuch toh chahiye hoga na jo ki user aur todos collection ko represent kare wahi UserModel aur TodoModel kar rahe hai bs. pehle collection ka naam then uske liye konsi schema hai.
 
