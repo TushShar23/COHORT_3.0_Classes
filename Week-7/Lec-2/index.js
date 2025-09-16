@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const {UserModel,TodoModel} = require('./db1');
 const JWT_SECRET = "@#$%%&YTHLKHOALIHGFOHAIO*())()*(!@#@&*$&*$12424515";
 
-mongoose.connect("")
+mongoose.connect("mongodb+srv://Tushar:kxzkEivZeOWOZtso@myprojectscluster.tztrggh.mongodb.net/Todo-app-database")
 
 const app = express();
 
@@ -15,12 +15,12 @@ async function authentication(req,res,next){
     const TokenDecode = jwt.verify(token,JWT_SECRET);
     
     const user = await UserModel.findOne({
-        id:TokenDecode._id
+        _id:TokenDecode.id
     })
     console.log(user)
     
     if(user){
-        req.userId = TokenDecode._id
+        req.userId = TokenDecode.id
         console.log(req.userId)
         // we have populated req object with userId property.
         next()
@@ -60,16 +60,26 @@ app.post("/signup",async(req,res)=>{
     //     console.error(err);
     // })
 
-    const hashedPassword = await bcrypt.hash(password,5); // autogenerates the hash and salt
+    try {
+        const hashedPassword = await bcrypt.hash(password,5); // autogenerates the hash and salt
 
-    await UserModel.insertOne({
-        email: email,
-        password: hashedPassword,
-        name: name
-    })
-    res.json({
-        Message:"User signed up successfully"
-    })
+        await UserModel.insertOne({
+            email: email,
+            password: hashedPassword,
+            name: name
+        })
+        // though writing this is not a good practise.
+        res.json({
+            Message:"User signed up successfully"
+        })
+        
+    } catch (error) {
+        console.error("Error while putting data into DB.");
+    }
+
+    
+   
+    
 
     // we can use try catch to handle errors while using async/await
 
@@ -95,7 +105,7 @@ app.post("/signin",async(req,res)=>{
         return
     }
     else{
-        const passwordMatch = bcrypt.compare(password,response.password);
+        const passwordMatch = await bcrypt.compare(password,response.password);
 
         if(passwordMatch){
             const token = jwt.sign({
@@ -135,7 +145,7 @@ app.post("/createTodo",authentication,async(req,res)=>{
 
 app.get("/todos",authentication,async(req,res)=>{
     const userTodos = await TodoModel.find({
-        id:req.userId
+        userId: req.userId
     })
     
     res.json({
@@ -150,3 +160,6 @@ app.listen(3000,()=>{
     console.log("Server Started")
 })
 
+
+
+// see use the same field names you have defined in the collection else there will be some glitch not error.
