@@ -41,14 +41,14 @@ async function authentication(req,res,next){
 
     try {
         const user = await UserModel.findOne({
-            userId : decodeToken._id
+            _id : decodeToken.id
         })
 
         console.log(user)
 
         if(user){
             // we have created a new field userId for populating req object
-            req.userId = decodeToken._id
+            req.userId = decodeToken.id
             // res.json({
             //     Message:"Inserted"
             // })
@@ -184,7 +184,7 @@ app.post("/todo",authentication,async(req,res)=>{
 // // user needs to be authenticated first for seeing all the todos.This is authenticated request
 app.get("/todos",authentication,async(req,res)=>{
     const results = await TodoModel.findOne({
-        uId: req.userId
+        userId: req.userId
     })
 
     res.json({
