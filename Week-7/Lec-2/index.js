@@ -1,11 +1,24 @@
 const express = require('express');
 const jwt= require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const { z } = require('zod');
 const mongoose = require('mongoose');
 const {UserModel,TodoModel} = require('./db1');
-const JWT_SECRET = "@#$%%&YTHLKHOALIHGFOHAIO*())()*(!@#@&*$&*$12424515";
 
-mongoose.connect("mongodb+srv://Tushar:kxzkEivZeOWOZtso@myprojectscluster.tztrggh.mongodb.net/Todo-app-database")
+
+// we are now using all the secrets from .env file
+require("dotenv").config();
+
+const JWT_SECRET = process.env.JWT_SECRET
+const DB_URI = process.env.MONGO_URI
+
+mongoose.connect(DB_URI).then(()=>{
+    console.log("Connection establish")
+})
+.catch((e)=>{
+    console.log(e)
+})
+// connection establish using env file.
 
 const app = express();
 
@@ -36,55 +49,76 @@ async function authentication(req,res,next){
 app.use(express.json());
 
 app.post("/signup",async(req,res)=>{
-    const email = req.body.email;
-    const password = req.body.password;
-    const name = req.body.name;
+    const requiredBody = z.object({
+        email: z.string().min(5).max(100).regex(/^[^\s@]+@[^\s@]+\.[^\s@]+$/),
+        // this is a regular expression regex for email pattern matching.We cannot put space around starting and 
+        password: z.string().min(5).max(30),
+        name: z.string().min(3).max(80)
 
-    // we have 2 methods in bcrypt for hashing password - hash(),genSalt(plaintext,hashing rounds,callback(err,salt))
-
-    //using promisified approach
-    // bcrypt.genSalt(5)
-    // .then((salt)=>{
-    //     console.log(`${salt}`);  
-    //     return bcrypt.hash(password,salt)            
-    // })
-    // .then(async(hashedPassword)=>{
-    //     await UserModel.insertOne({
-    //     email: email,
-    //     password: hashedPassword,
-    //     name: name
-    //  })
-    //  // here we have made the callback an async function coz of DB call
-    // })
-    // .catch((err)=>{
-    //     console.error(err);
-    // })
-
-    try {
-        const hashedPassword = await bcrypt.hash(password,5); // autogenerates the hash and salt
-
-        await UserModel.insertOne({
-            email: email,
-            password: hashedPassword,
-            name: name
-        })
-        // though writing this is not a good practise.
+    })
+    
+    const parseReqdBody = requiredBody.safeParse(req.body)
+    // this safeParse() gives us an object which contains {success:true|false,data:{},error} so we can access the property error this object
+    
+    if(!parseReqdBody.success){
         res.json({
-            Message:"User signed up successfully"
+            Message:"Incorrect Format",
+            error: parseReqdBody.error
         })
-        
-    } catch (error) {
-        console.error("Error while putting data into DB.");
+        return
     }
+    else{
+        const email = req.body.email;
+        const password = req.body.password;
+        const name = req.body.name;
 
+        // we have 2 methods in bcrypt for hashing password - hash(),genSalt(plaintext,hashing rounds,callback(err,salt))
+
+        //using promisified approach
+        // bcrypt.genSalt(5)
+        // .then((salt)=>{
+        //     console.log(`${salt}`);  
+        //     return bcrypt.hash(password,salt)            
+        // })
+        // .then(async(hashedPassword)=>{
+        //     await UserModel.insertOne({
+        //     email: email,
+        //     password: hashedPassword,
+        //     name: name
+        //  })
+        //  // here we have made the callback an async function coz of DB call
+        // })
+        // .catch((err)=>{
+        //     console.error(err);
+        // })
+
+        try {
+            const hashedPassword = await bcrypt.hash(password,5); // autogenerates the hash and salt
+
+            await UserModel.insertOne({
+                email: email,
+                password: hashedPassword,
+                name: name
+            })
+            // though writing this is not a good practise.
+            res.json({
+                Message:"User signed up successfully"
+            })
+            
+        } catch (error) {
+            console.error("Error while putting data into DB.");
+        }
+
+        
     
-   
+        
+
+        // we can use try catch to handle errors while using async/await
+
+
+        // PASSWORD IS STORED IN THE HASH FORM.
+    }
     
-
-    // we can use try catch to handle errors while using async/await
-
-
-    // PASSWORD IS STORED IN THE HASH FORM.
     
 })
 
