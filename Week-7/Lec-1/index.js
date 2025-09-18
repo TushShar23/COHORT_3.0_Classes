@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const {UserModel,TodoModel} = require('./Db');// we exported our models remember.Here we will use those models to represent the specific collection
 const JWT_SECRET = "sdjghahgohouhiuoas!@#U*^(&^(&$(HIHFIAH`2"
 
+
 mongoose.connect("mongodb+srv://Tushar:kxzkEivZeOWOZtso@myprojectscluster.tztrggh.mongodb.net/Todo-app-database")
 // .then(async () => {
 //     console.log("Connected");
