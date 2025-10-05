@@ -184,7 +184,7 @@ app.post("/todo",authentication,async(req,res)=>{
 
 // // user needs to be authenticated first for seeing all the todos.This is authenticated request
 app.get("/todos",authentication,async(req,res)=>{
-    const results = await TodoModel.findOne({
+    const results = await TodoModel.find({
         userId: req.userId
     })
 
