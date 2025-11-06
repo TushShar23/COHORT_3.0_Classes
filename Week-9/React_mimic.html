@@ -44,7 +44,16 @@
 
     // onBtnPress() is updating the count variable and then calling the buttonComponentReRender().
     // buttonComponent(count) is creating the button component and returning the button.
-    // buttonComponentReRender() is updating the STATE OF THE BUTTON COMPONENT(this is the actual react code)
+    // buttonComponentReRender() is updating the STATE OF THE BUTTON COMPONENT(this is the actual react function which will be called automatically when we write the react code)
+
+    //ORDER OF EXECUTION
+
+    // starting point  = buttonComponentReRender() fetch the div with id and empty its innerhtml and then it is calling the buttonComponent function and providing state.count as argument.
+    // buttonComponent() creates a new DOM element - button.Then it injects the "counter count_value" in button component - > setAttribute prop = "onclick" and its value is the function we made "onBtnPress()". and returning the button and then again control reaches to buttonComponentReRender() and it puts the button in the component variable and append it in the div.
+    //when we click the btn counter will start increasing by calling onBtnPress() and inside it state.count variable's value is updating and then it is calling buttonComponentReRender() function and then again all the stuff discussed above is done.
+
+    // this is how we mimicing the react.
+
 
 </script>
 </html>
