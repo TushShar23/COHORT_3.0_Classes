@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mimicing React</title>
+</head>
+<body>
+    <div id="btnparent">
+
+    </div>
+</body>
+<script>
+    // what does react do given component and state.It takes state and put it into component and again when we change the state it only changes the state not the component.
+    // first we define our state
+
+    let state = {
+        count: 0
+    }
+
+    function onBtnPress(){
+        state.count = state.count + 1;
+        buttonComponentReRender()
+    }
+
+
+    function buttonComponent(count){
+        // it creates the component
+        const button = document.createElement('button');
+        button.innerHTML = `Counter ${count}`;
+        button.setAttribute("onclick",'onBtnPress()');
+
+        return button;
+    }
+
+    function buttonComponentReRender(){
+        document.querySelector('#btnparent').innerHTML = "";
+        const component = buttonComponent(state.count);
+        document.querySelector('#btnparent').appendChild(component);
+    }
+
+
+    buttonComponentReRender();
+
+    // onBtnPress() is updating the count variable and then calling the buttonComponentReRender().
+    // buttonComponent(count) is creating the button component and returning the button.
+    // buttonComponentReRender() is updating the STATE OF THE BUTTON COMPONENT(this is the actual react code)
+
+</script>
+</html>
