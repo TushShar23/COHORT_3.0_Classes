@@ -58,3 +58,5 @@ export default App
 // PostComponent() -> App() -> main.jsx(where we have createdreactDom and in that we have selected "root-div") -> index.html
 
 // We are able to return xml/html from a function that is JSX.
+
+// we can add styling using objects and using inline style attribute in "{}".style = {{width:"40px",border:"2px solid white"}}
