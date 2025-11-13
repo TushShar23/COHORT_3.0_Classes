@@ -3,11 +3,27 @@
 function CustomRender(maincontainer,ReactElement){
     const elem = document.createElement(ReactElement.type);
     //modular/generic element
-    elem.innerHTML = ReactElement.children;
-    elem.setAttribute('href',ReactElement.props.href);
-    elem.setAttribute('target',ReactElement.props.target);
 
-    maincontainer.appendChild(elem)
+    // elem.innerHTML = ReactElement.children;
+    // elem.setAttribute('href',ReactElement.props.href);
+    // elem.setAttribute('target',ReactElement.props.target);
+
+    // maincontainer.appendChild(elem)
+
+    // WE ARE GOING TO WRITE TO MORE GENERIC CODE LIKE what if you have multiple props will you set 100 different attributes in every line so We will now USE LOOP APPROACH
+
+    elem.innerHTML = ReactElement.children;
+    //now properties
+    for (const property in ReactElement.props) {
+        if(property === "children") continue;
+        elem.setAttribute(property,ReactElement.props[property])
+        // console.log(ReactElement.props[property])
+    }
+    // now if we have multiple properties we can set them in elements without repeating.
+
+    maincontainer.appendChild(elem);
+
+    
 }
 
 const reactElement = {
