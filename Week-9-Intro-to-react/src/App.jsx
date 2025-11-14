@@ -5,9 +5,14 @@ import './App.css'
 
 function App() {
   return(
+    <>
     <Postcomponent/>
+    </>
   )
 }
+
+
+
 
 const style ={
   margin:"50px auto",
