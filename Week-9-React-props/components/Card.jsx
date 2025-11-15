@@ -95,5 +95,6 @@ function Card({name:username = "anon", para:maincontent}){
 // Props is an object which store the properties/state for a particular component.
 // EVERY COMPONENT HAS ITS OWN PROPS OBJECT
 // PROPS is not a global object
+// The name of the PROP should be SAME IN THE PARAMETER AND ARGUMENT.
 
 export default Card
