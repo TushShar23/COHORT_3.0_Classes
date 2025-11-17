@@ -16,6 +16,7 @@ function Counter_btn({innerText="Counter"}){
         </div>
     )
     // we have used props and useState() hook to demonstrate its use
+    // Counter is a STATE VARIABLE.If you will make a simple JS variable React will not update it coz its not a state variable and a HOOK(useState()) TELLS REACT THAT ITS A STATE VARIABLE.
 }
 
 export default Counter_btn;
