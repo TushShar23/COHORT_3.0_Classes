@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Nav_section from '../Components/NavSection.jsx';
 import TodoComponent from '../Components/Todo.jsx';
+import Timer from '../Components/timer.jsx'
 
 
 function App() {
@@ -54,7 +55,12 @@ useEffect(()=>{
 },[counter])
 
 // THIS WILL RUN WHEN THE COMPONENT IS MOUNTED ON SCREEN AND ALSO WHEN there is any updation/change IN ANY STATE VARIABLE/STATE like counter.[counter] simply means that we have GIVEN YOU A DEPENDENCY NOW useEffect() is also dependent on this dependency.WHENEVER THIS DEPENDENCY WILL BE UPDATED/CHANGED USEFFECT WILL RUN.
-
+const [showTimer,setShowTimer] = useState(true);
+    useEffect(()=>{
+      setInterval(()=>{
+        setShowTimer(currentVal=>!currentVal)
+      },5000)
+    },[]);
 
   return (
     <div>
@@ -63,6 +69,26 @@ useEffect(()=>{
       <Nav_section></Nav_section>
       <br />
       <TodoComponent></TodoComponent>
+      <br />
+      {showTimer && <Timer/>}
+      {/* timer is for understanding cleanup code in useEffect.
+
+        CLEANUP CODE/FUNCTION IS EXECUTED WHEN THE COMPONENT IS UNMOUNTED.
+
+        COMPONENT 1 IS UNMOUNTED SO CLEANUP WILL RUN
+        see CLEANUP CODE/FUNCTION tells that we are unsubscribing this component or for now we don't need this component so don't show its data and unsubscribe it coz we want to switch or need component.
+
+        COMPONENT 2 IS MOUNTED SO USEEFFECT CODE WILL RUN
+        Now we are in component2 and we have subscribe to the component2 means now it will show us the data and fetch data for us.Now we have checked component 2 and want to leave/unsubscribe it.
+
+        The moment we tell the server that we are unsubcribing the component 2.COMPONENT 2 IS UNMOUNTED and USEEFFECT CLEANUP FUNCTION WILL RUN
+        
+        CLEANUP FUNCTION will tell that we need to unmount the component.
+
+
+        
+      
+      */}
     </div>
   )
 }
