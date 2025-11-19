@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import Nav_section from '../Components/NavSection.jsx'
 
 
 function App() {
@@ -34,16 +35,14 @@ function App() {
 function updateVal(){
   // setCounter(currentval => currentval + 1)
   // In setCounter we have given it a anonymous implicit arrow function() which is implicitly returning the new value of counter everytime.IT IS USED WHEN WE DO NOT PASS ANY DEPENDENCY STILL WE WANT TO UPDATE THE STATE(EMPTY DEPENDENCY ARRAY)
-
-
   setCounter(counter+1);
 }
 
 
-useEffect(()=>{
-  console.log("update val")
- setInterval(updateVal,1000)
-},[])
+// useEffect(()=>{
+//   console.log("update val")
+//  setInterval(updateVal,1000)
+// },[])
 
 // THIS useEffect() runs only ONCE when our component is MOUNTED(PUT ON SCREEN).Here our DEPENDENCIES ARRAY IS NOT CONTAINING ANY DEPENDENCY like any state variable or else.
 // YOU CAN ALSO USE THIS FOR UPDATING STATE.THERE IS a jugaad.
@@ -57,9 +56,11 @@ useEffect(()=>{
 
 
   return (
-    <>
+    <div>
       {counter}
-    </>
+      <br />
+      <Nav_section></Nav_section>
+    </div>
   )
 }
 
