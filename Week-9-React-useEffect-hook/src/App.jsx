@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Nav_section from '../Components/NavSection.jsx'
+import Nav_section from '../Components/NavSection.jsx';
+import TodoComponent from '../Components/Todo.jsx';
 
 
 function App() {
@@ -60,6 +61,8 @@ useEffect(()=>{
       {counter}
       <br />
       <Nav_section></Nav_section>
+      <br />
+      <TodoComponent></TodoComponent>
     </div>
   )
 }
