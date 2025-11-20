@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import Card_Component from '../Components/Card_Children'
 import Todo_Component from '../Components/Todo_Lists&Keys'
+import Inline_component from '../Components/InlineComponent'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -61,6 +62,9 @@ function App() {
         <Todo_Component key={1} title={"Go to gym"} done={false}></Todo_Component>,
         <Todo_Component key={2} title={"Eat food"} done={true}></Todo_Component>
       ]}
+
+      <Inline_component></Inline_component>
+
     </>
   )
 }
