@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Card_Component from '../Components/Card_Children'
+import Todo_Component from '../Components/Todo_Lists&Keys'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,6 +25,42 @@ function App() {
           <textarea name="mytextarea" id=""></textarea>
         </div>
       </Card_Component>
+
+      {[
+
+        //In React, LISTS simply mean rendering multiple items using .map().
+
+        /*
+        
+        const items = ["apple", "banana", "mango"];
+
+            return (
+              <ul>
+                {items.map(item => <li>{item}</li>)}
+              </ul>
+            );
+
+        
+        
+        */
+
+
+        // Each child in a list should have a unique "key" prop.
+        //Check the render method of `App`. See https://react.dev/link/warning-keys for more information.
+
+        //(This ABOVE ERROR WILL COME IF WE DON'T USE KEYS)
+        /*
+        
+        > A key is a unique identifier you give to each element inside a list, so React can track them efficiently during re-render.
+          >Keys must be unique
+          >Keys must not change between renders
+          >Keys help React know which item changed, added, or removed
+        
+        */
+
+        <Todo_Component key={1} title={"Go to gym"} done={false}></Todo_Component>,
+        <Todo_Component key={2} title={"Eat food"} done={true}></Todo_Component>
+      ]}
     </>
   )
 }
