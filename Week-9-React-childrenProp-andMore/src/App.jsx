@@ -5,6 +5,7 @@ import './App.css'
 import Card_Component from '../Components/Card_Children'
 import Todo_Component from '../Components/Todo_Lists&Keys'
 import Inline_component from '../Components/InlineComponent'
+import ClassBasedCounter from '../Components/ClassBased_Component'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -64,6 +65,10 @@ function App() {
       ]}
 
       <Inline_component></Inline_component>
+
+      <br />
+      
+      <ClassBasedCounter></ClassBasedCounter>
 
     </>
   )
