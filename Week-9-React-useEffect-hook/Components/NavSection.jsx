@@ -20,4 +20,7 @@ function Nav_section(){
     )
 }
 
+
+// we have read about LifeCycle Event
+
 export default Nav_section
