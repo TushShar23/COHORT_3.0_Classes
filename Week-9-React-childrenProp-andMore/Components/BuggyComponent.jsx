@@ -4,9 +4,11 @@ import React from 'react';
 // ERROR BOUNDARY IS NOTHING BUT NOT LETTING YOUR "WHOLE SITE" TO BE CRASHED IN CASE IF ANY COMPONENT WILL NOT WORK OR SOME ERROR HAPPENS.
 
 function Buggy_Component(){
+
     throw new Error("I crashed!");
+
     return(
-        <>
+        <> 
          <h1>Hi there</h1>
         </>
     )
@@ -15,4 +17,9 @@ function Buggy_Component(){
 
     // ERROR BOUNDARY COMPONENT IS ONLY AVAILABLE FOR "CLASS BASED COMPONENT ONLY".
 }
+
+
+// LAST TOPIC WAS FRAGMENTS IN THE LAST CLASS.
+
+export default Buggy_Component;
 

@@ -1,11 +1,16 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Card_Component from '../Components/Card_Children'
 import Todo_Component from '../Components/Todo_Lists&Keys'
 import Inline_component from '../Components/InlineComponent'
 import ClassBasedCounter from '../Components/ClassBased_Component'
+import Buggy_Component from '../Components/BuggyComponent'
+import ErrorBoundary from '../Components/ErrorBoundary'
+
+
+
+
+// YES WE NEED TO IMPLEMENT ERROR BOUNDARY CLASS.
 
 function App() {
   const [count, setCount] = useState(0)
@@ -70,8 +75,16 @@ function App() {
       
       <ClassBasedCounter></ClassBasedCounter>
 
+      <br />
+
+      <ErrorBoundary>
+        <Buggy_Component />
+      </ErrorBoundary>
+
     </>
   )
 }
+
+
 
 export default App
