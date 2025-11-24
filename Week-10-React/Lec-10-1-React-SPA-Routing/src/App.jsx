@@ -1,26 +1,34 @@
 import { useState } from 'react'
 import './App.css'
-import {BrowserRouter,Routes,Route,Link} from 'react-router-dom'
+import {BrowserRouter,Routes,Route,Link,Outlet} from 'react-router-dom'
 import LandingPage from '../Components/LandingPage';
 import Class11 from '../Components/Class11';
 import Class12 from '../Components/Class12';
 import NoContentFound from '../Components/ErrorPage'
+import Layout from '../Components/Layout'
 
 function App() {
 
   return (
-    <div style={{backgroundColor:"black",height:"90vh",color:"white"}}>
+    <div style={{backgroundColor:"black",height:"100vh",color:"white"}}>
      <BrowserRouter>
-        <Link to={"/"} style={{color:"yellow",fontSize:"30px"}}>ALLEN</Link>|
+        {/* <Link to={"/"} style={{color:"yellow",fontSize:"30px"}}>ALLEN</Link>|
         <Link to={"/neet/online-coaching-class-11"} style={{color:"yellow",fontSize:"30px"}}>Class 11</Link>|
-        <Link to={"/neet/online-coaching-class-12"} style={{color:"yellow",fontSize:"30px"}}>Class 12</Link>| 
+        <Link to={"/neet/online-coaching-class-12"} style={{color:"yellow",fontSize:"30px"}}>Class 12</Link>|  
+        
+        WE HAVE PUT THESE LINKS IN THE HEADER COMPONENT IN LAYOUT COMPONENT.
+        
+        
+        */} 
 
         {/*  we have LINK component/TAG from "REACT ROUTER DOM" for navigation.<a> anchor tag cannot be used here coz if we use a tag then there is no sense of SPA coz every time we navigate to a new page.It RELOADS THE WHOLE CONTENT.THATSWHY <LINK> is USED.<a> again and again RELOADS THE WHOLE INDEX.JS on the page */}
         <Routes>
-          <Route path="/" element={ <LandingPage/> }></Route>
-          <Route path="/neet/online-coaching-class-11" element={ <Class11/> }></Route>
-          <Route path="/neet/online-coaching-class-12" element={ <Class12/> }></Route>
-          <Route path="*" element={ <NoContentFound/> }></Route>
+          <Route path='/' element={<Layout/>}>
+            <Route path="/" element={ <LandingPage/> }></Route>
+            <Route path="/neet/online-coaching-class-11" element={ <Class11/> }></Route>
+            <Route path="/neet/online-coaching-class-12" element={ <Class12/> }></Route>
+            <Route path="*" element={ <NoContentFound/> }></Route>
+          </Route>
         </Routes>
      </BrowserRouter>
     </div>
@@ -48,5 +56,52 @@ so far we have done a simple routing in react.WE HAVEN'T DONE NAVIGATION USING (
 1. thru "<LINK> "- use this when user manually will CLICK A BUTTON
 2." useNavigate()" ( hook) - use this when you automatically wants to take user back to a page.
 ex - after SIGNING UP redirect user automatically to the HOME PAGE/USER INFO PAGE.Like this doesn't require users action.
+
+
+
+The parent route’s path="/" doesn’t mean it catches all routes automatically.
+
+Its main purpose here is to define the base URL for its children.
+
+All the child routes are relative to this parent path.
+
+<Route path="/" element={<Layout />}> This means Layout is the parent route. All the child routes inside this <Route> will render inside the <Outlet /> of Layout.
+So Layout acts as a wrapper for all these child routes.
+
+
+Oulet is like a unique container which contains the child routes of parent path.ex - we have a navbar in that navbar there is a section coaching -> class11 , class 12, JEE , NDA , Neet 
+so what we can do is 
+
+<Route path = "/Coaching" element = {<NavbarCoaching />} >
+  <Route path = "Class11" element = {<class11/>}
+  <Route path = "Class12" element = {<class12/>}
+  <Route path = "JEE" element = {<JEE/>}
+</Route>
+
+
+************
+
+CHILD ROUTES should usually USE RELATIVE PATHS
+
+Full URL = parent path + child relative path
+
+
+Absolute path (starts with /) → independent, not combined with parent
+
+Relative path (no /) → combined with parent
+
+index route → special case, default child of parent
+
+
+************
+
+
+First LAYOUT will render
+ |
+Header 
+ |
+Outlet
+ |
+Footer
 
 */
