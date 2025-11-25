@@ -22,6 +22,7 @@ function App() {
         */} 
 
         {/*  we have LINK component/TAG from "REACT ROUTER DOM" for navigation.<a> anchor tag cannot be used here coz if we use a tag then there is no sense of SPA coz every time we navigate to a new page.It RELOADS THE WHOLE CONTENT.THATSWHY <LINK> is USED.<a> again and again RELOADS THE WHOLE INDEX.JS on the page */}
+
         <Routes>
           <Route path='/' element={<Layout/>}>
             <Route path="/" element={ <LandingPage/> }></Route>
@@ -42,6 +43,8 @@ export default App
 // for routing in react we have "REACT-ROUTER-DOM"
 /*
 
+
+
 React Router DOM is a library specifically designed for handling routing in React web applications. It is a crucial part of building Single Page Applications (SPAs) with React, allowing for smooth navigation between different views or components without requiring a full page reload
 
 Library is like a cool dude because it has restrictions BUT NOT AS MUCH IN A FRAMEWORK
@@ -60,6 +63,7 @@ ex - after SIGNING UP redirect user automatically to the HOME PAGE/USER INFO PAG
 
 
 The parent route’s path="/" doesn’t mean it catches all routes automatically.
+It is like a BASE ROUTE.
 
 Its main purpose here is to define the base URL for its children.
 
@@ -72,11 +76,28 @@ So Layout acts as a wrapper for all these child routes.
 Oulet is like a unique container which contains the child routes of parent path.ex - we have a navbar in that navbar there is a section coaching -> class11 , class 12, JEE , NDA , Neet 
 so what we can do is 
 
-<Route path = "/Coaching" element = {<NavbarCoaching />} >
+1) <Route path = "/Coaching" element = {<NavbarCoaching />} >
   <Route path = "Class11" element = {<class11/>}
   <Route path = "Class12" element = {<class12/>}
   <Route path = "JEE" element = {<JEE/>}
 </Route>
+
+
+** see if you put any ROUTE except with "/Coaching" or any child routes.Then it will not work/render thi
+
+2) <Route path = "/Coaching" element = {<NavbarCoaching />} >
+  <Route path = "/Coaching/Class11" element = {<class11/>}
+  <Route path = "/Coacing/Class12" element = {<class12/>}
+  <Route path = "/Coacing/JEE" element = {<JEE/>}
+</Route>
+
+But nesting ka benefit nahi milta
+<Outlet /> kabhi render nahi hoga
+Parent route ka behave layout ki tarah nahi hoga
+
+
+** RECOMMENDED WAY = 1 (always make child routes relative.Don't make them ABSOLUTE ELSE THEY WILL BE INDEPENDENT)  ****
+
 
 
 ************
