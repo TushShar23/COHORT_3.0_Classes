@@ -6,6 +6,7 @@ import Class11 from '../Components/Class11';
 import Class12 from '../Components/Class12';
 import NoContentFound from '../Components/ErrorPage'
 import Layout from '../Components/Layout'
+import Timer from '../Components/timer_useRef';
 
 function App() {
 
@@ -32,6 +33,9 @@ function App() {
           </Route>
         </Routes>
      </BrowserRouter>
+          
+
+     <Timer />
     </div>
   )
 }
