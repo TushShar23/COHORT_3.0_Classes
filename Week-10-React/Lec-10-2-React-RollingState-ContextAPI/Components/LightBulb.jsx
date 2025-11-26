@@ -13,4 +13,6 @@ function LightBulb(){
     )
 }
 
+// WE are sending "STATE VARIABLE AND UPDATOR AS props TO COMPONENTS".ARGUMENT AND PARAMETER NAME SHOULD BE SAME.
+
 export default LightBulb;
