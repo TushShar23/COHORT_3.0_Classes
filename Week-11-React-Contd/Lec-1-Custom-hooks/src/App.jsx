@@ -2,7 +2,8 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Counter from '../Components/Counter_customHook'
+import Counter from '../Components/Counter_customHook';
+import usePost from '../Components/Posthook'
 
 // we export this CUSTOM HOOK SO THAT WE CAN USE IN OUR COMPONENT LOCATED IN DIFFERENT FOLDER.
 export function useCounter(){
@@ -16,9 +17,20 @@ export function useCounter(){
 }
 
 function App() {
+  const postObj = usePost();
   return(
     <div>
       <Counter />
+      <Counter />
+      <Counter />
+      <br />
+      <br />
+      {JSON.stringify(postObj)}
+      <br />
+      <br />
+      {postObj.title}
+      <br />
+      {postObj.id}
     </div>
   )
 }
@@ -28,5 +40,7 @@ function App() {
 
 // IN OUR COUNTER COMPONENT WE HAVE USED OUR CUSTOM HOOK.SEE HOW CLEAN OUR APP COMPONENT IS.COZ WE HAVE DELEGATED THE WORK AND HAVEN'T SHOVED ALL THE CODE IN IT.
 
+
+// usePost() is a custom hook which returns us a post which we are fetching from a backend.
 
 export default App
