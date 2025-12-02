@@ -26,4 +26,6 @@ function usePost(){
 }
 
 
+// we can here also create a "loading component" which renders a text only in the mean time when data is fetching.
+
 export default usePost;
