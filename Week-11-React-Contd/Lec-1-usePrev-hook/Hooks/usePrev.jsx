@@ -28,3 +28,5 @@ export default usePrev;
 Here when the value is 0 the current value which will be returned is "UNDEFINED" and then the "ref.current " will be set to "0" -> "ref.current = 0".Then again on clicking button value becomes 1 so here first "0" will be returned as current value and then the effect will run and set "ref.current" to "1".
 
 */
+
+// You can say that "NODE JS GLOBAL VARIABLE is something like REFS in react coz we don't component to re-render"
