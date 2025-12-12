@@ -2,6 +2,7 @@ import { useRef } from "react";
 
 function useDebounce(orgFunc){
     const currentclock = useRef();
+    // we dont want to re render the component but we need its value
 
     const mainFunc = ()=>{
         // first we clear/terminate the time/currentclock then assign the new clock.
