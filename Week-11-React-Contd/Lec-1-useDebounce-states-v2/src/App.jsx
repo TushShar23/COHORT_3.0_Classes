@@ -24,6 +24,8 @@ function App() {
 
 // We are implementing another approach of "useDebounce hook" where we are using useDebounce hook on value changing in the input box when user gets away from keyboard for 30ms or more it updates the value into the "debouncevalue variable" and the moment that variable gets updated our effect will run and do the expensive operation.
 
+// we have not used API calling mechanism to demonstrate the working BUT we have used console.log("Expensive operation").WHENEVER WE TYPE IN THE INPUT BOX IT WAITS FOR 200MS AFTER THAT IT SENDS THE REQUEST (but here shows console.log("EXPENSIVE OPERATION")).so YES it is working
+
 export default App
 
 
