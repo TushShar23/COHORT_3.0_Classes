@@ -15,9 +15,13 @@ function usePrev(value){
     console.log("Returned value : "+ref.current)
     return ref.current;
 }
-// BUT THE ABOVE IS NOT THE RIGHT IMPLEMENTATION OF THE "usePrev"
 
 export default usePrev;
+
+// what problem here is when there is a re-render on the page it will not run the effect BUT IT NOW RETURNS THE REF.CURRENT VALUE means PREVIOUS AND CURRENT VALUE WILL BECOME SAME.
+
+
+// BUT THE ABOVE IS NOT THE RIGHT IMPLEMENTATION OF THE "usePrev"
 
 // MOST IMPORTANT PROPERTY OF REACT WHEN IT COMES TO HANDLING EFFECTS IS :
 // React "renders" FIRST then RUN the EFFECTS.
