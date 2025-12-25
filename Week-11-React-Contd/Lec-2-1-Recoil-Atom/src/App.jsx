@@ -1,9 +1,32 @@
 import { useState } from 'react'
 import './App.css'
+import { RecoilRoot } from 'recoil'
+import 
 
 function App() {
-  retur
+  return (
+    <RecoilRoot>
+      <Counter />
+    </RecoilRoot>
+  )
 }
+
+
+function Counter(){
+  return(
+    <div>
+      <CounterState/>
+      <Increase />
+      <Decrease />
+    </div>
+  )
+}
+
+export default App
+
+// i need to create increase , decrease , counter , counter
+
+
 
 
 
@@ -30,4 +53,3 @@ KEY CONCEPTS IN RECOIL
 */
 
 
-export default App
