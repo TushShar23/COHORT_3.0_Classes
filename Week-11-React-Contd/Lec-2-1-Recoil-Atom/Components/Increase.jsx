@@ -1,16 +1,16 @@
 
 import { useSetRecoilState } from "recoil"
-import { count } from "../Store/atoms/Count"
+import {Count} from "../Store/atoms/Count.js"
 
 function Increase(){
-    const setCount = useSetRecoilState(count)
+    const setCount = useSetRecoilState(Count)
     //Returns a setter function for updating Recoil state. Does not subscribe the component to the given state.
 
     return (
         <div>
-            <button onChange={()=>{setCount((curr)=>curr+1)}}>Increase</button>
+            <button onClick={()=>{setCount((count)=>count+1)}}>Increase</button>
         </div>
     )
 }
 
-export default 
+export default Increase;
