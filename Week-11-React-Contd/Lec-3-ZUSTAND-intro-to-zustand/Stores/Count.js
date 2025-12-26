@@ -5,7 +5,54 @@ const useCountStore = create((set,get)=>({
     Increment: ()=>set((state)=>({count: state.count + 1})),
     Decrement: ()=>set((state)=>({count: state.count - 1}))
     // increment and decrement are actions
+    // Because we want to return the OBJECT(Updated State) thats why we put {} inside () else it will be a simple function body
+    
 }))
+
+
+// ******IMPORTANT********
+// WHAT KIND OF OBJECT IT RETURNS ?
+/*The object you return is a PARTIAL STATE OBJECT.
+
+Not full state.
+Not random data.
+Not a new store.
+
+
+It is “the piece of state you want to change.”
+
+
+Why “partial”?
+
+Assume your store looks like this:
+
+{
+  count: 0,
+  user: { name: "Tushar" },
+  theme: "dark"
+}
+
+
+Now you return:
+
+{ count: 1 }
+
+
+You are NOT saying:
+
+“Replace everything with this.”
+
+You are saying:
+
+“Update only count, keep everything else the same.”
+
+
+The returned object is:
+A shallow partial update object for the store state
+
+"The object returned to set is a “patch” for the store state".
+(A patch is a small fix or change applied to something bigger, without replacing the whole thing)
+*/
 
 // SO IN ZUSTAND THERE ARE STORES,ACTIONS,STATES
 
