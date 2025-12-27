@@ -8,7 +8,68 @@ const useCountStore = create((set,get)=>({
     // Because we want to return the OBJECT(Updated State) thats why we put {} inside () else it will be a simple function body
     
 }))
+/*
 
+create((set) => ({ ... }))
+
+    create creates a global store
+    It returns a custom hook
+    That hook is named by you (useStore)
+
+👉 This hook is how components talk to the store.
+
+
+
+
+- STATE(data) : (count)
+- ACTIONS(updator functions) : (increment , decrement)Functions that modify state.They live inside the store
+- SELECTORS(PARTICULAR Element/state which you want to update):Selector = “what slice of state do I care about?”
+
+
+
+set((state) => ({ count: state.count + 1 }))
+
+    set updates the store
+    YOU NEVER MUTATE STATE DIRECTLY.
+    ALWAYS RETURN A NEW OBJECT
+
+
+
+SET : set is a function that Zustand itself creates and passes to you.
+
+You passed a function to create.
+
+(set, get) => ({ ... })
+👉 Zustand calls this function for you, and injects:
+
+set → function to update state
+get → function to read current state
+
+This pattern is called Dependency Injection.
+
+
+
+const count = useCountStore((state) => state.count);
+  (means)
+  Give this component the current value of count from the global store,
+  and re-render this component ONLY when count changes.”
+
+  ANOTHER APPROACH FOR WRITING THIS(VERBOSE-using more than words/things than needed) :
+
+  function CountVal() {
+  const count = useCountStore(function selector(state) {
+    return state.count;
+  });
+
+  return <div>{count}</div>;
+}
+
+
+
+
+  
+
+*/
 
 // ******IMPORTANT********
 // WHAT KIND OF OBJECT IT RETURNS ?
