@@ -5,9 +5,9 @@ import './App.css';
 function App() {
   return(
     <div className='App'>
-      <Columns state="PLANNED"/>
-      <Columns state="ONGOING"/>
-      <Columns state="DONE"/>
+      <Columns CurrentState="PLANNED"/>
+      <Columns CurrentState="ONGOING"/>
+      <Columns CurrentState="DONE"/>
     </div>
   )
   
