@@ -34,8 +34,11 @@ set((state) => ({ count: state.count + 1 }))
     ALWAYS RETURN A NEW OBJECT
 
 
-
-SET : set is a function that Zustand itself creates and passes to you.
+*****************************
+SET : set is a function that Zustand itself creates and passes to you.SET() ALWAYS EXPECT AN OBJECT IN RETURN VALUE.
+set() ko jo return hota hai = next state ka object (ya partial object)mtlb updated state return ho jaati hai 
+Ek plain JavaScript object return kiya hai
+********************************
 
 You passed a function to create.
 

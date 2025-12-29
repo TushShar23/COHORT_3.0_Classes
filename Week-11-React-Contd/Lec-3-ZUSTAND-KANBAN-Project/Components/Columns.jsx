@@ -4,17 +4,17 @@ import useTaskStore from '../src/Store/Tasks';
 import Task from './Task';
 // import { shallow } from 'zustand/shallow'
 
-export default function Columns({ CurrentState }){
-    const tasks = useTaskStore((store)=>store.tasks)
+export default function Columns({ CurrentState }) {
+    const tasks = useTaskStore((store) => store.tasks)
 
     const mytasks = useMemo(() => tasks.filter((t) => t.state === CurrentState),
         [tasks, CurrentState]
     );
 
-    const [text,setText] = useState('');
-    const [open,setOpen] = useState(false);
+    const [text, setText] = useState('');
+    const [open, setOpen] = useState(false);
 
-    const addtask = useTaskStore((store)=>store.addTask)
+    const addtask = useTaskStore((store) => store.addTask)
 
     console.log(tasks)
 
@@ -22,13 +22,23 @@ export default function Columns({ CurrentState }){
         <div className="column">
             <div className='headers'>
                 <h3>{CurrentState}</h3>
-                <button onClick={()=>{setOpen(true)}}>Add</button>
+                <button onClick={() => { setOpen(true) }}>Add</button>
             </div>
-
-
             {
                 // mytasks.map((task)=>(<Task title={task.title} key={task.title}/>)) is we are iterating over task array in our STORE and INJECTING ITS VALUE IN THE PROPS In the TASK COMPONENT.
-                mytasks.map((task)=><Task title={task.title} key={task.title}/>)
+                mytasks.map((task) => <Task title={task.title} key={task.title} />)
+            }
+            {open && <div className="input-box">
+                <div className="inputcontent">
+                    <input onChange={(e) => { setText(e.target.value) }} type="text" value={text} />
+                    <button onClick={() => {
+                        addtask(text, CurrentState)
+                        setText('')
+                        setOpen(false)
+                    }}
+                    >Submit</button>
+                </div>
+            </div>
             }
         </div>
     )
@@ -36,13 +46,13 @@ export default function Columns({ CurrentState }){
 
 
 // (prev,next)=>{
-    //     const longest = prev.length > next.length ? prev.length : next.length;
-    //     for(let i=0;i<longest;i++){
-    //         if(prev[i]=== undefined || next[i]=== undefined) return false;
-    //         if(prev[i]!==next[i])return false;
-    //     }
-    //     return true;
-    // }
+//     const longest = prev.length > next.length ? prev.length : next.length;
+//     for(let i=0;i<longest;i++){
+//         if(prev[i]=== undefined || next[i]=== undefined) return false;
+//         if(prev[i]!==next[i])return false;
+//     }
+//     return true;
+// }
 
 /*
     ******** Q-HOW IT IS POSSIBLE THAT FIRST FUNCTION VALUES ARE AUTOMATICALLY PASSED TO THE SECOND PARAMETER(comparisonFn) ? *********
