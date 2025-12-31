@@ -30,7 +30,7 @@ export default function Columns({ CurrentState }) {
             }
             {open && <div className="input-box">
                 <div className="inputcontent">
-                    <input onChange={(e) => { setText(e.target.value) }} type="text" value={text} />
+                    <input onChange={(e) => { setText(e.target.value) }} type="text" value={text} className='myinput'/>
                     <button onClick={() => {
                         addtask(text, CurrentState)
                         setText('')
