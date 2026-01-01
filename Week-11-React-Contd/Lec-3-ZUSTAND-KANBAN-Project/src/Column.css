@@ -79,5 +79,5 @@
 }
 .input-box button:hover{
     background: rgb(62, 3, 62);
-    
+    border: 1px solid white;
 }
