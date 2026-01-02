@@ -13,6 +13,7 @@ export default function Columns({ CurrentState }) {
 
     const [text, setText] = useState('');
     const [open, setOpen] = useState(false);
+    const [close,setClose] = useState(false);
 
     const addtask = useTaskStore((store) => store.addTask)
 
@@ -29,6 +30,8 @@ export default function Columns({ CurrentState }) {
                 mytasks.map((task) => <Task title={task.title} key={task.title} />)
             }
             {open && <div className="input-box">
+                <div className="close">
+                </div>
                 <div className="inputcontent">
                     <input onChange={(e) => { setText(e.target.value) }} type="text" value={text} className='myinput'/>
                     <button onClick={() => {
@@ -37,6 +40,7 @@ export default function Columns({ CurrentState }) {
                         setOpen(false)
                     }}
                     >Submit</button>
+                    {/* <button>close button</button> */}
                 </div>
             </div>
             }
