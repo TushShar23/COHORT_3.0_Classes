@@ -1,13 +1,17 @@
 import { useState } from 'react'
 import Columns from '../Components/Columns'
 import './App.css'; 
+import Header from '../Components/Header';
 
 function App() {
   return(
     <div className='App'>
-      <Columns CurrentState="PLANNED"/>
-      <Columns CurrentState="ONGOING"/>
-      <Columns CurrentState="DONE"/>
+      <Header/>
+      <div className='maincontent'>
+        <Columns CurrentState="PLANNED"/>
+        <Columns CurrentState="ONGOING"/>
+        <Columns CurrentState="DONE"/>
+      </div>
     </div>
   )
   

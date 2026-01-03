@@ -19,8 +19,11 @@
     font-size: small;
     font-weight: 600;
     background:var(--COLOR-GRAY-LIGHT);
-    padding: 0.2rem 0.2rem;
+    padding: 0.1rem 0.4rem;
     border-radius: 2.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .PLANNED{
@@ -32,3 +35,7 @@
 .DONE{
     background: var(--COLOR-DONE);
 }
+
+/* .del-icon img{
+    
+} */

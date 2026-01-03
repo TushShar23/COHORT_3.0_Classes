@@ -13,7 +13,7 @@ export default function Columns({ CurrentState }) {
 
     const [text, setText] = useState('');
     const [open, setOpen] = useState(false);
-    const [close,setClose] = useState(false);
+    // const [close,setClose] = useState(false);
 
     const addtask = useTaskStore((store) => store.addTask)
 

@@ -23,9 +23,14 @@ const useTaskStore = create((set)=>({
         ********************************
         
         */
-    
-    }
+
+       
+    },
     // addtask is a function which takes two things as parameter (title,status) and inside that we are running set() in which there is a callback which takes the state:current state and that function is doing the main task of adding a new task in the task array and using SPREAD OPERATOR WE ARE FIRST SPREADING THE PREVIOUS ARRAY AND THEN ADDING NEW TASK INTO IT.
+
+
+    // THIS IS DELETE TASK FUNCTIONALITY.Coz our unique key is our TITLE we just filter the all the tasks and which matches the provided title we do not put that title inside the new tasks array
+    deleteTask : (title)=> set( (store)=>({tasks:store.tasks.filter((task)=>task.title !== title)}) )
 }))
 
 export default useTaskStore;
