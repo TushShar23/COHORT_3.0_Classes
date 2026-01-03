@@ -8,16 +8,18 @@
     flex-direction: column;
     justify-content: space-between;
     text-transform: capitalize;
+    font-weight: bold;
 }
 
 .bottom-wrapper{
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .status{
     font-size: small;
-    font-weight: 600;
+    font-weight: 800;
     background:var(--COLOR-GRAY-LIGHT);
     padding: 0.1rem 0.4rem;
     border-radius: 2.5px;
@@ -36,6 +38,12 @@
     background: var(--COLOR-DONE);
 }
 
-/* .del-icon img{
-    
-} */
+.del-icon img{
+    background-color: rgba(0, 0, 0, 0.33);
+    padding: 0.1rem 0.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.del-icon img:hover{
+    background-color: rgba(6, 6, 6, 0.492);
+}
