@@ -46,4 +46,5 @@
 }
 .del-icon img:hover{
     background-color: rgba(6, 6, 6, 0.492);
+    border: 1px solid white;
 }
