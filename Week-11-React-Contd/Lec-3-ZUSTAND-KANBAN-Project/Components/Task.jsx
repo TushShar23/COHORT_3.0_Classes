@@ -14,7 +14,7 @@ export default function Tasks({title}){
     const deleteTask = useTaskStore((store)=>store.deleteTask)
 
     return(
-        <div className='tasks'>
+        <div className='tasks' draggable>
             <div>{title}</div>
             <div className='bottom-wrapper'>
                 <div className='del-icon'><img src="../src/assets/Delicon.png" alt="icon" onClick={()=>{deleteTask(title)}}/></div>

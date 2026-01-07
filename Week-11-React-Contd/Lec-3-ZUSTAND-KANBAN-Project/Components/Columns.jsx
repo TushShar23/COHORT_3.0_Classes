@@ -20,7 +20,16 @@ export default function Columns({ CurrentState }) {
     console.log(tasks)
 
     return (
-        <div className="column">
+        <div className="column" onDragOver={e=>{e.preventDefault()}}>
+            {/* ondragover is used ALLOW DROP SOMETHING
+            
+                1 onDragStart → data bhejo
+                2️ onDragOver → allow drop
+                3️ onDrop → kaam karo
+
+                CYCLE : Pakadna → ghumana → andar lana → upar rakhna → chhodna → khatam
+            
+            */}
             <div className='headers'>
                 <h3>{CurrentState}</h3>
                 <button onClick={() => { setOpen(true) }}>Add</button>

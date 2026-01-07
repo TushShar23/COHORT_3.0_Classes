@@ -9,6 +9,7 @@
     justify-content: space-between;
     text-transform: capitalize;
     font-weight: bold;
+    cursor:move;
 }
 
 .bottom-wrapper{
