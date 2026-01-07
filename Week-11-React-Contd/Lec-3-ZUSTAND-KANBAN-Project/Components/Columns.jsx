@@ -20,7 +20,21 @@ export default function Columns({ CurrentState }) {
     console.log(tasks)
 
     return (
-        <div className="column" onDragOver={e=>{e.preventDefault()}}>
+        <div className="column" onDragOver={e => { e.preventDefault() }} 
+        onDrop={
+            (e) => {
+                console.log("drop")
+            }
+        }
+        // ondrop : for telling that task is dropped(Jab mouse chhod dete ho)
+        /*  Purpose:
+
+            Drag data receive
+            Store update
+            Task move
+            
+        */
+        >
             {/* ondragover is used ALLOW DROP SOMETHING
             
                 1 onDragStart → data bhejo
@@ -28,6 +42,8 @@ export default function Columns({ CurrentState }) {
                 3️ onDrop → kaam karo
 
                 CYCLE : Pakadna → ghumana → andar lana → upar rakhna → chhodna → khatam
+
+                “By default drop allowed nahi” thats why we have added preventDefault
             
             */}
             <div className='headers'>
@@ -42,7 +58,7 @@ export default function Columns({ CurrentState }) {
                 <div className="close">
                 </div>
                 <div className="inputcontent">
-                    <input onChange={(e) => { setText(e.target.value) }} type="text" value={text} className='myinput'/>
+                    <input onChange={(e) => { setText(e.target.value) }} type="text" value={text} className='myinput' />
                     <button onClick={() => {
                         addtask(text, CurrentState)
                         setText('')
