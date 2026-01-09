@@ -20,10 +20,10 @@ export default function Columns({ CurrentState }) {
     console.log(tasks)
 
     return (
-        <div className="column" onDragOver={e => { e.preventDefault() }} 
-        onDrop={
-            (e) => {
-                console.log("drop")
+        <div className="column" onDragOver={(e)=>{e.preventDefault()}} onDrop={(e) => 
+            { 
+                const id = e.dataTransfer.getData("taskId")
+                console.log(id)
             }
         }
         // ondrop : for telling that task is dropped(Jab mouse chhod dete ho)

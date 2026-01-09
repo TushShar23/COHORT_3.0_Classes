@@ -18,7 +18,7 @@ export default function Tasks({title}){
     }
 
     return(
-        <div className='tasks' draggable onDragStart={handleDragStart}>
+        <div className='tasks' draggable onDragStart={(e)=>{e.dataTransfer.setData("taskId",mytasks.title)}}>
             <div>{title}</div>
             <div className='bottom-wrapper'>
                 <div className='del-icon'><img src="../src/assets/Delicon.png" alt="icon" onClick={()=>{deleteTask(title)}}/></div>
