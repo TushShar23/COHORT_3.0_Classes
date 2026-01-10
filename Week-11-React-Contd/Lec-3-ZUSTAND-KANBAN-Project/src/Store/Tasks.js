@@ -30,7 +30,10 @@ const useTaskStore = create((set)=>({
 
 
     // THIS IS DELETE TASK FUNCTIONALITY.Coz our unique key is our TITLE we just filter the all the tasks and which matches the provided title we do not put that title inside the new tasks array
-    deleteTask : (title)=> set( (store)=>({tasks:store.tasks.filter((task)=>task.title !== title)}) )
+    deleteTask : (title)=> set( (store)=>({tasks:store.tasks.filter((task)=>task.title !== title)}) ) , 
+    
+    moveTask: (taskId,status)=>set((store)=>({tasks:store.tasks.map((task)=>task.title === taskId ? {...task, state:status}: task )}))
+
 }))
 
 export default useTaskStore;

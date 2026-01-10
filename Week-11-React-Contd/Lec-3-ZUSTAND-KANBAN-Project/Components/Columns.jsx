@@ -16,6 +16,7 @@ export default function Columns({ CurrentState }) {
     // const [close,setClose] = useState(false);
 
     const addtask = useTaskStore((store) => store.addTask)
+    const movetask = useTaskStore((store)=>store.moveTask)
 
     console.log(tasks)
 
@@ -23,6 +24,7 @@ export default function Columns({ CurrentState }) {
         <div className="column" onDragOver={(e)=>{e.preventDefault()}} onDrop={(e) => 
             { 
                 const id = e.dataTransfer.getData("taskId")
+                movetask(id,CurrentState)
                 console.log(id)
             }
         }
