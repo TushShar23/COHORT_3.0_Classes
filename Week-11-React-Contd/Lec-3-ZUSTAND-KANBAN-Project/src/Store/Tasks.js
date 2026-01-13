@@ -33,7 +33,7 @@ const useTaskStore = create((set)=>({
     deleteTask : (title)=> set( (store)=>({tasks:store.tasks.filter((task)=>task.title !== title)}) ) , 
     
     moveTask: (taskId,status)=>set((store)=>({tasks:store.tasks.map((task)=>task.title === taskId ? {...task, state:status}: task )}))
-
+    // moveTask is a function which takes taskId and Status as parameter and inside this function(implicit function) it runs "SET function" which returns partial object and inside the set function we run another arrow function which takes "store" as a parameter and inside the function in TASKS we are ITERATING OVER TASKS  using map which takes a function as an argument and that function is taking an argument as "task" so we are inside the function checking that the current task's title is equal to "taskId(which is the title of the task which we want to move)" if match then make a new object {having that task or concatenate that task} and update the state else WAISE HI REHNE DO TASK.
 }))
 
 export default useTaskStore;
