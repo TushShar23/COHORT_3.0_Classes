@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import '../src/Column.css';
 import useTaskStore from '../src/Store/Tasks';
 import Task from './Task';
+import classNames from 'classnames';
 // import { shallow } from 'zustand/shallow'
 
 export default function Columns({ CurrentState }) {
@@ -13,7 +14,7 @@ export default function Columns({ CurrentState }) {
 
     const [text, setText] = useState('');
     const [open, setOpen] = useState(false);
-    // const [close,setClose] = useState(false);
+    const [drop,setDrop] = useState(false);
 
     const addtask = useTaskStore((store) => store.addTask)
     const movetask = useTaskStore((store)=>store.moveTask)
@@ -21,8 +22,19 @@ export default function Columns({ CurrentState }) {
     console.log(tasks)
 
     return (
-        <div className="column" onDragOver={(e)=>{e.preventDefault()}} onDrop={(e) => 
-            { 
+        <div className={classNames('column',{drop: drop})} onDragOver={(e)=>{
+            e.preventDefault()
+            setDrop(true)
+        }} 
+
+        onDragLeave={(e)=>{
+            e.preventDefault()
+            setDrop(false)
+        }}
+        onDrop={(e) => 
+            {   
+                // we need to set setDrop(false) onDrop too if we don't then white border appears after dropping the task.
+                setDrop(false)
                 const id = e.dataTransfer.getData("taskId")
                 movetask(id,CurrentState)
                 console.log(id)
