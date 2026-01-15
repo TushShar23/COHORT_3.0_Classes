@@ -1,6 +1,8 @@
 import {create} from 'zustand';
+import {persist} from 'zustand/middleware'
 
-const useTaskStore = create((set)=>({
+// persist is a middleware from zustand which will persist our data in the localstorage of browser.
+const useTaskStore = create(persist((set)=>({
     tasks: [{ title:"Go to Gym" , state:"ONGOING"},{ title:"Complete assignment" , state:"DONE"}],
 
     // adding a method for adding task
@@ -34,6 +36,6 @@ const useTaskStore = create((set)=>({
     
     moveTask: (taskId,status)=>set((store)=>({tasks:store.tasks.map((task)=>task.title === taskId ? {...task, state:status}: task )}))
     // moveTask is a function which takes taskId and Status as parameter and inside this function(implicit function) it runs "SET function" which returns partial object and inside the set function we run another arrow function which takes "store" as a parameter and inside the function in TASKS we are ITERATING OVER TASKS  using map which takes a function as an argument and that function is taking an argument as "task" so we are inside the function checking that the current task's title is equal to "taskId(which is the title of the task which we want to move)" if match then make a new object {having that task or concatenate that task} and update the state else WAISE HI REHNE DO TASK.
-}))
+})),{name:""})
 
 export default useTaskStore;
