@@ -48,3 +48,11 @@
 .del-icon img:hover{
     background-color: rgba(6, 6, 6, 0.492);
 }
+
+@media screen and (max-width:800px) {
+    .tasks{
+        height: fit-content;
+        /* width: fit-content; */
+        word-wrap: break-word;
+    }
+}

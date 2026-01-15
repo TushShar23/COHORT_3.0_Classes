@@ -18,6 +18,7 @@ export default function Columns({ CurrentState }) {
 
     const addtask = useTaskStore((store) => store.addTask)
     const movetask = useTaskStore((store)=>store.moveTask)
+    const checktask = useTaskStore((store)=>store.checkTask)
 
     console.log(tasks)
 

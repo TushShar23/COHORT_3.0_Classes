@@ -1,10 +1,10 @@
 .column{
     background:var(--COLOR-GRAY-DARK);
-    min-height: 20rem;
+    min-height: 22rem;
     color:#fff;
     width: 33%;
     padding: 1rem 0.8rem;
-    max-width: 20rem;
+    max-width: 30%;
     margin: 0;
     border-radius: 4px;
     display: flex;
@@ -90,5 +90,12 @@
 .input-box button:hover{
     background: rgb(62, 3, 62);
     border: 1px solid white;
+}
+
+
+@media screen and (max-width:800px){
+    .column{
+        width: 100%;
+    }
 }
 
