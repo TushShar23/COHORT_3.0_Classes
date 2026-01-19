@@ -1,3 +1,4 @@
+import "../src/Uncontrolled.css"
 
 const UncontrolledForm = ()=>{
     const handleSubmit = (e)=>{
@@ -19,12 +20,12 @@ const UncontrolledForm = ()=>{
             <h1>Uncontrolled Form</h1>
             {/* onsubmit is an event handler that runs when a form is submitted. */}
             <form onSubmit={handleSubmit}>
-                <label>
-                    Name : 
+                <label className="name">
+                    <span>Name :</span>
                     <input type="text" name="inputName" id="inputId" />
                 </label>
-                <label>
-                    Age:
+                <label className="age">
+                    <span>Age :</span>
                     <input type="text" name="myage" id="ageId"  />
                 </label>
                 <br />
