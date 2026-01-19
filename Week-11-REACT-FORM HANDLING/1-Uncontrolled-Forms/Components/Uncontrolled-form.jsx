@@ -1,8 +1,18 @@
 
-export const UncontrolledForm = ()=>{
+const UncontrolledForm = ()=>{
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(e.target.value)
+    }
+
+    const showData = ()=>{
+        const nameData = document.querySelector("#inputId");
+        const ageData = document.querySelector("#ageId");
+        const nameValue = nameData.value;
+        const ageValue = ageData.value;
+        console.log(nameData,ageData);
+        console.table(nameValue,ageValue);
+        // console.log(e.target.value)
     }
     return(
         <div className="container">
@@ -15,11 +25,13 @@ export const UncontrolledForm = ()=>{
                 </label>
                 <label>
                     Age:
-                    <input type="text" name="myage" id="agedid"  />
+                    <input type="text" name="myage" id="ageId"  />
                 </label>
                 <br />
-                <button>Submit</button>
+                <button onClick={showData}>Submit</button>
             </form>
         </div>
     )
 }
+
+export default UncontrolledForm;
