@@ -18,7 +18,7 @@ const UncontrolledForm = ()=>{
     return(
         <div className="container">
             <h1>Uncontrolled Form</h1>
-            {/* onsubmit is an event handler that runs when a form is submitted. Using it is a good practise coz it supports Enter key form submission functionality,validation,accessibility etc.*/}
+            {/* onsubmit is an event handler that runs when a form is submitted. Using it is a good practise coz it supports Enter key form submission functionality,validation,accessibility etc.USING "USEREF" hook ALSO COMES IN UNCONTROLLED WAY.*/}
             <form onSubmit={handleSubmit}>
                 <label className="name">
                     <span>Name :</span>
