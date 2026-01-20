@@ -18,7 +18,7 @@ const UncontrolledForm = ()=>{
     return(
         <div className="container">
             <h1>Uncontrolled Form</h1>
-            {/* onsubmit is an event handler that runs when a form is submitted. */}
+            {/* onsubmit is an event handler that runs when a form is submitted. Using it is a good practise coz it supports Enter key form submission functionality,validation,accessibility etc.*/}
             <form onSubmit={handleSubmit}>
                 <label className="name">
                     <span>Name :</span>
