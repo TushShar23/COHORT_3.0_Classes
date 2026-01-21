@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../src/Form.css"
 
+// this approach uses a lot of re-renders and state variables.This is kinda hard way to handle forms
 
 const RegistrationForm = ()=>{
     const [fname,setFname] = useState("")
