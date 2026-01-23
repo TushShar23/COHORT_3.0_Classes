@@ -1,6 +1,6 @@
 import { useState } from "react"
 import SignUpForm  from "./SignUp-Form"
-import { SignInForm } from "./SignIn-Form"
+import SignInForm  from "./SignIn-Form"
 import "../src/Form.css"
 
 const Form = ()=>{
@@ -17,7 +17,7 @@ const Form = ()=>{
     return(
         <div className="container">
             {state === true ? <SignUpForm/> : <SignInForm/>}
-            {signup === true ?  <a href="#" onClick={(e)=>changeState(e)}>Already have an account</a> :  <a href="#" onClick={(e)=>changeState(e)}>Sign Up</a>}
+            {signup === true ?  <a href="#" onClick={(e)=>changeState(e)}>Already have an account</a> :  <a href="#" onClick={(e)=>changeState(e)}>New User ? Create an account</a>}
            
         </div>
         
