@@ -1,30 +1,46 @@
- import "../src/Sign-in.css"
+ import { useState } from "react"
+import "../src/Sign-in.css"
 
  const SignInForm = ()=>{
+    const [user,setUser] = useState({
+        Email:"",
+        Password:"",
+    })
+
+    const handleInput = (e)=>{
+        const name = e.target.name // Input box attribute
+        const value = e.target.value
+
+        setUser((prev)=>({...prev,[name]:value}));
+    }
 
     const handleSubmit=(e)=>{
         e.preventDefault()
+    }
+
+    const showData = ()=>{
+        console.log(user)
     }
     return(
         <form onSubmit={handleSubmit}>
             <h1>Sign In</h1>
                 
-                <section className="fname">
-                    <label htmlFor="FirstName">
-                        <strong>First Name</strong>
+                <section className="Email">
+                    <label htmlFor="Email">
+                        <strong>Email</strong>
                     </label>
-                    <input type="text" name="FirstName" id="fname" placeholder="Enter your first name"/>
+                    <input type="email" name="Email" id="fname" placeholder="Enter your email" onChange={(e)=>handleInput(e)} value={user.Email}/>
                 </section>
 
-                <section className="LastName">
-                    <label htmlFor="LastName">
-                        <strong>Last Name</strong>
+                <section className="Password">
+                    <label htmlFor="Password">
+                        <strong>Password</strong>
                     </label>
-                    <input type="text" name="LastName" id="lname" placeholder="Enter your last name"/>
+                    <input type="password" name="Password" id="lname" placeholder="Enter your password" onChange={(e)=>handleInput(e)} value={user.Password}/>
                 </section>
 
                 <section className="buttons">
-                    <button>Sign In</button>
+                    <button onClick={showData}>Sign In</button>
                 </section>
         </form>
     )
