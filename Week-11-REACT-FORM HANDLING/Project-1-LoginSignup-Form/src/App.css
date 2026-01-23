@@ -3,5 +3,9 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  border: 2px solid yellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
