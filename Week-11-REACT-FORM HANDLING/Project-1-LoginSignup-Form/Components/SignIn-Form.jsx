@@ -29,14 +29,14 @@ import "../src/Sign-in.css"
                     <label htmlFor="Email">
                         <strong>Email</strong>
                     </label>
-                    <input type="email" name="Email" id="fname" placeholder="Enter your email" onChange={(e)=>handleInput(e)} value={user.Email}/>
+                    <input type="email" name="Email" id="email" placeholder="Enter your email" onChange={(e)=>handleInput(e)} value={user.Email}/>
                 </section>
 
                 <section className="Password">
                     <label htmlFor="Password">
                         <strong>Password</strong>
                     </label>
-                    <input type="password" name="Password" id="lname" placeholder="Enter your password" onChange={(e)=>handleInput(e)} value={user.Password}/>
+                    <input type="password" name="Password" id="passwordcd" placeholder="Enter your password" onChange={(e)=>handleInput(e)} value={user.Password}/>
                 </section>
 
                 <section className="buttons">
