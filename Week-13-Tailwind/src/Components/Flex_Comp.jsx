@@ -2,7 +2,7 @@ import React from 'react'
 
 const TestingComp = () => {
   return (
-    <div className='flex flex-col gap-3 mt-2'>
+    <div className='flex flex-col gap-3 mt-2 border-4 border-black'>
         <div className='bg-blue-900 text-yellow-400 flex gap-10 justify-center p-2'>
         {/* p-2 padding-2 in all directions.Usually works in pixels */}
         <li>Child 1</li>
