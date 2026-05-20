@@ -1,4 +1,7 @@
 import { useState } from "react"
+import SideProfileCard from "./SideProfileCard"
+import ScheduleCard from "./ScheduleCard"
+import OptionsCard from "./OptionsCard"
 
 export const SideBar = ()=>{
     const [open,setOpen] = useState(false)
@@ -7,13 +10,13 @@ export const SideBar = ()=>{
 
     // }
     return(
-        <div className="Side-div flex text-white justify-center items-end h-screen p-4">
+        <div className="Side-div flex text-white justify-center items-end h-screen">
             <div className="tog-btn flex justify-center items-center">
              <i class={`ri-menu-line text-white text-xl font-bold absolute top-10 left-5 ${open && "hidden"}`} onClick={()=>{setOpen(true)}}></i>
             </div>
             {/* left box */}
             
-            <div className={`div-left h-full bg-white w-0 md:w-75 md:flex  gap-10 md:flex-col justify-start items-start text-black p-3  transition-all duration-300 ease-in-out md:translate-x-0 -translate-x-96 ${open && "w-75 translate-x-0 flex flex-col gap-10"}`}>
+            <div className={`div-left shadow-xl h-full bg-white w-0 md:w-75 md:flex  gap-10 md:flex-col justify-start items-start text-black p-3  transition-all duration-300 ease-in-out md:translate-x-0 -translate-x-96 ${open && "w-75 translate-x-0 flex flex-col gap-10"}`}>
                 {/* what i have done here to make the sidebar is that applied a transition slide from left when the screen is greater or equal to md then it appears its width is 75 else(mobile screen) w-0  and the right div takes the whole space when mobile screen BY DEFAULT WIDTH OF THE SIDEBAR IS 0 */}
                 <div className="logo flex gap-25 items-center justify-center p-2">
                     <div className="name bg-blue-950 px-3 py-2 rounded-lg">
@@ -48,8 +51,11 @@ export const SideBar = ()=>{
 
 
             {/* right box */}
-            <div className="div-right h-150 w-screen md:w-[calc(100%-300px)] bg-white border-5 border-yellow-500 text-black">
-                Hey!
+            <div className="div-right h-150 p-2 w-screen md:w-[calc(100%-300px)] bg-white text-black flex gap-2 justify-between">
+                {/* Hey! */}
+                <SideProfileCard img={`https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fGF2YXRhcnxlbnwwfHwwfHx8MA%3D%3D`} name={"Prabhleen Kaur"} phno={"9999900000"} location={"Delhi,India"} id={"prabhleen@gmail.com"}/>
+                <ScheduleCard />
+                <OptionsCard />
             </div>
         </div>
     )
