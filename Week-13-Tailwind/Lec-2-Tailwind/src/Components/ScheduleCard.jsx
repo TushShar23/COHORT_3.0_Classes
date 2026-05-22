@@ -2,7 +2,7 @@ import React from 'react'
 
 const ScheduleCard = () => {
   return (
-    <div className='w-fit h-fit border-4 p-4 flex flex-col gap-8'>
+    <div className='w-fit h-fit p-4 flex flex-col gap-8'>
         <div className="headers flex flex-col gap-2 mt-2">
             <h3>Wednesday,20 May</h3>
             <h1 className=' text-lg md:text-2xl font-bold text-blue-950'>Good Morning, Prabhleen! <span>&#128075;</span></h1>
@@ -14,10 +14,10 @@ const ScheduleCard = () => {
               <span className='flex gap-2 text-sm md:text-xl items-center text-gray-500'><i class="ri-arrow-left-long-line"></i><i class="ri-arrow-right-long-line"></i></span>
             </div>
             
-            <div className="meetings flex flex-col w-fit items-center border-2 h-full p-2">
+            <div className="meetings flex flex-col w-fit items-center h-full p-2">
               {/* first */}
               <div className="one flex justify-between items-center w-62 md:w-108 gap-2 p-1 border-b border-gray-400">
-                <div className="time flex flex-col items-start w-24 gap-0.5 p-1 justify-start -mt-1.5 md:items-center ">
+                <div className="time flex flex-col items-start w-24 gap-0.5 p-1 justify-start -mt-1.5">
                   <p className='text-sm md:text-md text-start font-semibold'>11:30 AM</p>
                   <p className='text-xs text-gray-500 text-left'>11:30 AM</p>
                 </div>
