@@ -8,7 +8,7 @@ const ScheduleCard = () => {
             <h1 className=' text-lg md:text-2xl font-bold text-blue-950'>Good Morning, Prabhleen! <span>&#128075;</span></h1>
         </div>
         
-        <div className="scheduler w-fit md:w-125 h-90 mb-2 rounded-xl shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] flex flex-col items-center p-4 gap-2">
+        <div className="scheduler w-fit lg:w-125 h-90 mb-2 rounded-xl shadow-[0_0_10px_0px_rgba(0,0,0,0.3)] flex flex-col items-center p-4 gap-2">
             <div className="date flex justify-between pl-6 pr-6 w-fit md:w-md h-12 items-center rounded-xl bg-blue-50/60">
               <p className='flex gap-2 items-center'><i class="ri-calendar-2-line text-sm md:text-lg font-bold"></i><span className="text-sm md:text-[16px]">Wednesday,20 May 2026</span><i class="ri-arrow-drop-down-line text-lg md:text-2xl text-gray-500 font-bold"></i></p>
               <span className='flex gap-2 text-sm md:text-xl items-center text-gray-500'><i class="ri-arrow-left-long-line"></i><i class="ri-arrow-right-long-line"></i></span>
