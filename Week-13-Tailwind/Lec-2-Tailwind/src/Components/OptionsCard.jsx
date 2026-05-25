@@ -32,3 +32,4 @@ const OptionsCard = ()=>{
 }
 
 export default OptionsCard
+// In OptionsCard main container we have given CUSTOM BOX SHADOW in using tailwind css.

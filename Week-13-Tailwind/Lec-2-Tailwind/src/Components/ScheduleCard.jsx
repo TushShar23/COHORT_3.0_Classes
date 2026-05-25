@@ -66,3 +66,5 @@ const ScheduleCard = () => {
 }
 
 export default ScheduleCard
+
+// So schedule card will expand when screen will ne narrower in size and we will hide the sideprofile card at that screen size
