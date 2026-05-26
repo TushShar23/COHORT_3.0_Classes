@@ -1,0 +1,41 @@
+> you can install typescript globally too but recommended to use it locally
+> typescript SHOULD be a DEV DEPENDENCY
+> "Tsc" is a common typescript compiler.We can also use "esbuild","swc" for the compilation process.
+> TYPE INFERENCING
+> npx tsc -b to build the ts file or compile the file
+> index.js is the main file which will run on browser or in node.js
+> index.d.ts is the typescript declaration file which contains only declarations not implementations
+> index.js.map It maps compiled JS back to original TypeScript source.
+> index.d.ts.map It maps ".d.ts" back to original ".ts"
+> tsconfig.tsbuildinfo This file stores:
+                    which files were compiled
+                    dependency graph
+                    timestamps
+                    hashes
+                    compiler state
+
+                    so next build can reuse previous work.
+
+Without it every build compile ALL files again
+
+With .tsbuildinfo only changed files are recompiled
+
+This makes builds MUCH faster in large projects.
+
+EXAMPLE:
+Suppose you have:
+100 TypeScript files
+
+You change only:
+Navbar.tsx
+
+Without .tsbuildinfo:
+TypeScript recompiles everything.
+
+With .tsbuildinfo:
+TypeScript recompiles only affected files.
+
+DON'T COMMIT THIS FILE
+
+> For seeing your TS code working u can use "ts-node" package or u can first compile ts file then run the "node converTed_tsFile.js" cmd
+> The type is being inferred by the TypeScript COMPILER
