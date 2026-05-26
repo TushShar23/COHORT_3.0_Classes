@@ -8,5 +8,5 @@ html, body {
 }
 
 @theme{
-  --breakpoint-custom:430px;
+  --breakpoint-custom: 430px;
 }
