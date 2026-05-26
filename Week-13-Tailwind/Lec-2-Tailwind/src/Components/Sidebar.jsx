@@ -12,7 +12,7 @@ export const SideBar = ()=>{
     return(
         <div className="Side-div flex items-center justify-center sm:items-end h-screen border-2 ">
             <div className="tog-btn flex justify-center items-center">
-             <i class={`ri-menu-line text-white text-xl font-bold absolute top-10 left-5 ${open && "hidden"}`} onClick={()=>{setOpen(true)}}></i>
+             <i class={`ri-menu-line text-white text-xl font-bold absolute top-10 left-5 ${open && "hidden"} max-custom:text-black`} onClick={()=>{setOpen(true)}}></i>
             </div>
             {/* left box */}
             
@@ -60,3 +60,6 @@ export const SideBar = ()=>{
         </div>
     )
 }
+
+
+// Make this project using grid 
