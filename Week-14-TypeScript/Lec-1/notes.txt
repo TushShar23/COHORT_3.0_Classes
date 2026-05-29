@@ -40,3 +40,39 @@ DON'T COMMIT THIS FILE
 > For seeing your TS code working u can use "ts-node" package or u can first compile ts file then run the "node converTed_tsFile.js" cmd
 > The type is being inferred by the TypeScript COMPILER
 > void VS NULL VS undefined
+
+> WHAT I WAS DOING WRONG ->>
+
+
+You are calling Greet("Tushar") immediately instead of passing the function itself.
+
+This line:
+
+DelayedCall(Greet("Tushar"))
+
+does this:
+
+1. Calls Greet immediately
+2. console.log runs
+3. Greet returns undefined
+4. undefined gets passed to DelayedCall
+
+But DelayedCall expects:
+
+fn: () => void
+
+which means:
+
+a function with no parameters
+
+
+
+"() => Greet("Tushar")"" WHY THIS WORKS ->>
+
+a function
+takes no arguments
+returns void
+
+Exactly matching:
+() => void
+
