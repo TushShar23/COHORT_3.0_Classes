@@ -76,3 +76,5 @@ returns void
 Exactly matching:
 () => void
 
+
+> Internals of TS.How it works
