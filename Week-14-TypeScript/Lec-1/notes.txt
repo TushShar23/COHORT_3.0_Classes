@@ -77,4 +77,13 @@ Exactly matching:
 () => void
 
 
-> Internals of TS.How it works
+> Internals of TS.How it works/Compiler working
+> tsconfig.json
+    1.TARGET : The target setting changes which JS features are downleveled and which are left intact. For example, an arrow function () => this will be turned into an equivalent function expression if target is ES5 or lower.
+    "mainly ye btata hai JS ka konsa version use kar rahe hai"
+    2.rootDir:IN this we specify the path of the folder which contains the actual .Ts files not any other file.NAMING- "./src"
+    3.outDir:In this we specify the path of the folder which contains Ts build files(.js,.map.dt,etc..) like this folder we might or might not want to push to github.
+    NAMING - "./build" or "./dist"(distribution)
+
+    INPUT FOLDER - "/src"
+    OUTPUT FOLDER - "/dist" OR "/build"
