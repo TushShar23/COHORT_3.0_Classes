@@ -87,3 +87,9 @@ Exactly matching:
 
     INPUT FOLDER - "/src"
     OUTPUT FOLDER - "/dist" OR "/build"
+
+
+> noIMPLICITAny should be false( if we make it TRUE then our variable will take type ANY if we do not specify it explicitly) 
+
+> OBJECT is not a primitive type,its a complex type variable so we need to define it and pass it to a function.(OBJECT AS AN ARGUMENT)
+>. TypeScript does not allow the + operator on a union type unless it can prove the operation is safe.
