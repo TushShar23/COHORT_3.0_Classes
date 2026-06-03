@@ -93,3 +93,4 @@ Exactly matching:
 
 > OBJECT is not a primitive type,its a complex type variable so we need to define it and pass it to a function.(OBJECT AS AN ARGUMENT)
 >. TypeScript does not allow the + operator on a union type unless it can prove the operation is safe.
+> INTERFACES can use OTHER INTERFACES
