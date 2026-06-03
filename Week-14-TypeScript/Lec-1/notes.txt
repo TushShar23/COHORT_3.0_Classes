@@ -94,3 +94,10 @@ Exactly matching:
 > OBJECT is not a primitive type,its a complex type variable so we need to define it and pass it to a function.(OBJECT AS AN ARGUMENT)
 >. TypeScript does not allow the + operator on a union type unless it can prove the operation is safe.
 > INTERFACES can use OTHER INTERFACES
+> When you are implementing an interface to a class the MEMBERS OF THE INTERFACE HAS TO BE PRESENT IN THE CLASS,YOU CAN ADD MORE MEMBERS but THE INTERFACE MEMBERS HAS TO BE PRESENT in the CLASS.
+> WHY DO WE NEED INTERFACES IF WE HAVE CLASSES
+  1.Zero "Weight" in JavaScript: Interfaces only exist while you are writing code in TypeScript. When your code is turned into JavaScript (transpiled), interfaces completely disappear. Classes, however, stay in your final code and make your file size larger.
+
+> WHAT IS THE NEED TO IMPLEMENT AND INTERFACE WITH A CLASS and this case isn't it repeating again and again.(You violate DRY when you write the SAME LOGIC again and again)
+
+> You can IMPLEMENT and EXTENDS in the same class.
