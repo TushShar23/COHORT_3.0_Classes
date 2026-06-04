@@ -234,3 +234,13 @@ Abstract Class = Rules + Some Code
   Interface is mainly for describing object/class structures, while type can describe objects plus unions, primitives, tuples, and function types.
 
 > We can pick EXACTLY ONE TYPE in union types too.There are ways
+
+> A union type (A | B) behaves like an intersection when accessing properties, because TypeScript only allows properties that are common to all members of the union.
+Union of values
+↓
+Intersection of accessible properties
+
+A & B
+
+Values:       A AND B
+Properties:   All from A + All from B
