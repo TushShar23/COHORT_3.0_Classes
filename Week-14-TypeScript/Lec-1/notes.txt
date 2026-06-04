@@ -38,8 +38,12 @@ TypeScript recompiles only affected files.
 DON'T COMMIT THIS FILE
 
 > For seeing your TS code working u can use "ts-node" package or u can first compile ts file then run the "node converTed_tsFile.js" cmd
+
 > The type is being inferred by the TypeScript COMPILER
+
 > void VS NULL VS undefined
+
+> The Type System in TypeScript describes the various data types supported by the language. It is divided into three major sections: Any Type, Built-In Type, and User-Defined Type. 
 
 > WHAT I WAS DOING WRONG ->>
 
@@ -78,6 +82,7 @@ Exactly matching:
 
 
 > Internals of TS.How it works/Compiler working
+
 > tsconfig.json
     1.TARGET : The target setting changes which JS features are downleveled and which are left intact. For example, an arrow function () => this will be turned into an equivalent function expression if target is ES5 or lower.
     "mainly ye btata hai JS ka konsa version use kar rahe hai"
@@ -92,12 +97,140 @@ Exactly matching:
 > noIMPLICITAny should be false( if we make it TRUE then our variable will take type ANY if we do not specify it explicitly) 
 
 > OBJECT is not a primitive type,its a complex type variable so we need to define it and pass it to a function.(OBJECT AS AN ARGUMENT)
+
 >. TypeScript does not allow the + operator on a union type unless it can prove the operation is safe.
+
 > INTERFACES can use OTHER INTERFACES
+
 > When you are implementing an interface to a class the MEMBERS OF THE INTERFACE HAS TO BE PRESENT IN THE CLASS,YOU CAN ADD MORE MEMBERS but THE INTERFACE MEMBERS HAS TO BE PRESENT in the CLASS.
+
 > WHY DO WE NEED INTERFACES IF WE HAVE CLASSES
+While classes can define object structures, interfaces are essential for defining "contracts" that describe what an object should look like without the overhead of implementation or runtime presence
   1.Zero "Weight" in JavaScript: Interfaces only exist while you are writing code in TypeScript. When your code is turned into JavaScript (transpiled), interfaces completely disappear. Classes, however, stay in your final code and make your file size larger.
+
+interfaces:
+
+  Don't exist in memory
+  Don't create objects
+  Don't have constructors
+  Don't have implementation
+
+  Why do interfaces exist then?
+
+Because sometimes you want to describe a shape without creating a class.
+
+The main reason interfaces exist is not because they don't take memory.
+
+The main reason is:
+To define and check the shape of data without needing a class.
+
+Classes:
+
+  Exist at runtime
+  Occupy memory
+  Can have methods
+  Can have constructors
+  Can create objects
+
+
+
+> An interface is a compile-time contract that defines the shape of an object without creating any real object or taking memory at runtime.You can't have default implementation of any method in the interface but can do in Abstract class/class.
+
+Your version:
+
+"Interfaces are kind of classes without memory"
+
+is partially true as a learning analogy, but technically incorrect because:
+
+Interface ≠ Class
+
+    A class can:
+
+    have constructors
+    have implementation
+    create objects
+
+    An interface can do none of these.
 
 > WHAT IS THE NEED TO IMPLEMENT AND INTERFACE WITH A CLASS and this case isn't it repeating again and again.(You violate DRY when you write the SAME LOGIC again and again)
 
 > You can IMPLEMENT and EXTENDS in the same class.
+
+> IF YOU HAVE A BASIC "TYPE" OBJECT THEN IT CAN BE IMPLEMENTED BY A CLASS IF IT IS A UNION(CUSTOM DATATYPE,this|that) THEN COMPILER WILL GENERATE ERROR.AND THIS IS THE MAIN USE OF INTERFACE (| = UNION, & = intersection)
+
+> We can define a type alias for a primitive type like so:
+
+  type Address = string;
+
+  We often combine primitive type with union type to define a type alias, to make the code more readable:
+
+  type NullOrUndefined = null | undefined;
+
+  But we can’t use an interface to alias a primitive type. The interface can only be used for an object type.
+
+> Blueprint refers to a Class: A template that defines the initial state (attributes) and behaviors (methods) of objects.It creates instances (objects). It provides the exact layout of data in memory and the default behaviors.
+
+  Contract refers to an Interface : A strict set of rules declaring what a class should do, without specifying how to do it.A contract is a strict agreement. If a class adopts a contract (implements an interface), it promises to provide code for all the methods listed in that contract.NO OBJECT CREATION THROUGH THIS,COMPILE TIME ONLY
+
+  Structure refers to Architecture: The overall hierarchy and organization of your software’s classes, packages, and relationships.
+
+
+> Union types
+
+Union types allow us to describe values that can be one of several types and create unions of various primitive, literal, or complex types:
+
+type Transport = 'Bus' | 'Car' | 'Bike' | 'Walk';
+Union type can only be defined using type.
+
+
+> An abstract class is a partially implemented class that cannot be instantiated and is meant to be inherited by other classes.
+
+EXAMPLE :  
+
+abstract class Animal {
+    abstract speak(): void;
+
+    eat() {
+        console.log("Eating");
+    }
+}
+
+Here:
+
+eat() is already implemented.
+speak() must be implemented by child classes.
+You cannot do:
+  new Animal(); // ❌ Error
+
+  Memory Trick
+  Interface = Contract
+  Abstract Class = Half-built Class
+  Class = Complete Class
+
+
+> Abstract Class
+
+A half-implemented class that provides some code and forces subclasses to complete the rest.
+
+Abstract Class = Rules + Some Code
+
+.You can define methods in abstract class like you can have the default implementation of the methods in the abstract classes BUT YOU CAN'T DO THIS IN INTERFACE.
+
+> WE SHOULD AVOID USING "arrow functions" INSIDE THE CLASSES AND OBJECTS as there will be a problem.Arrow functions dont HAVE THEIR OWN THIS
+
+> If the parent class constructor already sets name and age, then you do not need to do it again in the child class.
+
+    super(...) already initializes the parent fields
+        ↓
+    Don't assign them again
+
+    If the parent constructor handles the initialization, let it do the work. That's one of the main benefits of inheritance.
+
+    When would you need this.name = name?
+
+    Only if the parent constructor doesn't initialize those properties.
+
+> TYPE lets you do the UNION and INTERSECTION
+  Interface is mainly for describing object/class structures, while type can describe objects plus unions, primitives, tuples, and function types.
+
+> We can pick EXACTLY ONE TYPE in union types too.There are ways
