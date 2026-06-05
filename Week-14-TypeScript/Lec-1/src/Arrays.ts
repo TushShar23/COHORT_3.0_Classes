@@ -64,3 +64,5 @@ let user1: User = {
 }
 
 console.log(user1)
+
+//There are ways through which we can declare arrays of unknown size.AND IN TS arrays contains ONLY SAME DATATYPE values unlike JS.
