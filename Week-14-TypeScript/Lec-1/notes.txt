@@ -244,3 +244,7 @@ A & B
 
 Values:       A AND B
 Properties:   All from A + All from B
+
+
+> Interview Answer
+Use interface for object contracts and type when you need unions, intersections, or other advanced type compositions.

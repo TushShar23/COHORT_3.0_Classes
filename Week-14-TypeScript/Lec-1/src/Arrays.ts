@@ -65,4 +65,26 @@ let user1: User = {
 
 console.log(user1)
 
+
+// UNKNOWN SIZE ARRAYS
+
+let UnK_Arr: number[] = [];
+
+// UnK_Arr.push("hey")
+// as we have declared a number array we can't put string value in it.
+
+UnK_Arr.push(88);
+UnK_Arr.push(10);
+UnK_Arr.push(94);
+UnK_Arr.push(9);
+UnK_Arr.push(3);
+UnK_Arr.push(75);
+
+UnK_Arr.pop();
+
+console.log(UnK_Arr);
+console.log(UnK_Arr[3]);
+
+
+
 //There are ways through which we can declare arrays of unknown size.AND IN TS arrays contains ONLY SAME DATATYPE values unlike JS.
