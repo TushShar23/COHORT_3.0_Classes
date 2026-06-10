@@ -41,7 +41,13 @@ DON'T COMMIT THIS FILE
 
 > The type is being inferred by the TypeScript COMPILER
 
+> TypeScript type inference is the compiler's built-in ability to automatically deduce data types without requiring you to write explicit type annotations. It allows you to write clean, concise JavaScript-like code while still completely preserving the benefits of strict static type safety.
+
+ANNOTATION - mai samjhaunga
+INFERENCE - mai khud samajh jaaunga
+
 > void VS NULL VS undefined
+
 
 > The Type System in TypeScript describes the various data types supported by the language. It is divided into three major sections: Any Type, Built-In Type, and User-Defined Type. 
 
