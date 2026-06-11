@@ -106,6 +106,8 @@ Exactly matching:
 
 >. TypeScript does not allow the + operator on a union type unless it can prove the operation is safe.
 
+> AVOID "any" AS MUCH AS YOU CAN
+
 > INTERFACES can use OTHER INTERFACES
 
 > When you are implementing an interface to a class the MEMBERS OF THE INTERFACE HAS TO BE PRESENT IN THE CLASS,YOU CAN ADD MORE MEMBERS but THE INTERFACE MEMBERS HAS TO BE PRESENT in the CLASS.
@@ -138,7 +140,7 @@ Classes:
   Can have constructors
   Can create objects
 
-
+> WE CAN IMPLEMENT TYPE ON A CLASS BUT IN LIMITED CASES(when statically defined datatypes like string,number etc.) BUT WHEN IT COMES TO "CUSTOM TYPE" THEN IT CREATES PROBLEM WITH CLASSES.THIS IS WHERE INTERFACE COMES INTO THE PICTURE
 
 > An interface is a compile-time contract that defines the shape of an object without creating any real object or taking memory at runtime.You can't have default implementation of any method in the interface but can do in Abstract class/class.
 
@@ -254,3 +256,8 @@ Properties:   All from A + All from B
 
 > Interview Answer
 Use interface for object contracts and type when you need unions, intersections, or other advanced type compositions.
+
+>let currentOrder: string | undefined;
+This means that we are telling TS compiler ke "ya toh string aayegi ya undefined".WHY UNDEFINED ? WHAT IF THE GIVEN VALUE WILL NOT FOUND ? "then our variable contains UNDEFINED but we have already told TS that it's gonna be a string so that is why we need to give UNDEFINED type too"
+
+>Properties can also be marked as readonly for TypeScript. While it won’t change any behavior at runtime, a property marked as readonly can’t be written to during type-checking.Using the readonly modifier doesn’t necessarily imply that a value is totally immutable - or in other words, that its internal contents can’t be changed. It just means the property itself can’t be re-written to.We have to initialize it ONCE
