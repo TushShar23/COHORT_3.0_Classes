@@ -261,3 +261,12 @@ Use interface for object contracts and type when you need unions, intersections,
 This means that we are telling TS compiler ke "ya toh string aayegi ya undefined".WHY UNDEFINED ? WHAT IF THE GIVEN VALUE WILL NOT FOUND ? "then our variable contains UNDEFINED but we have already told TS that it's gonna be a string so that is why we need to give UNDEFINED type too"
 
 >Properties can also be marked as readonly for TypeScript. While it won’t change any behavior at runtime, a property marked as readonly can’t be written to during type-checking.Using the readonly modifier doesn’t necessarily imply that a value is totally immutable - or in other words, that its internal contents can’t be changed. It just means the property itself can’t be re-written to.We have to initialize it ONCE
+
+> error = red SWIGGLY LINE
+
+> DUCK TYPING V/S STRUCTURAL TYPING
+Duck typing checks behavior at runtime ("if it quacks like a duck"), while structural typing checks an object's shape at compile time. TypeScript uses structural typing.(PRECISE ANSWER)read about it.
+
+> STRUCTURAL typing checks that is the STRUCTURE IS MAINTAINED or NOT ? IF YES then ok DOES NOT CARE ABOUT ADDITIONAL PROPERTIES,IF NO then throws error.IF BARE MINIMUM PROPERTY(s) is/are PRESENT then Structure is maintained and doesn’t matter what added after that
+BUT WE CANNOT GIVE THAT TYPE TO THE OBJECT/VARIABLE we are defining coz it has a structure AND WE ARE ADDING NEW PROPERTIES IN OUR OBJECT which will give error
+"mtlb hum ek object bnaaye uske ander woh bare minimum properties daale lekin type woh na de aur aur bhi properties daale baad mei uss object ka data uss dusre object mei daalde jiski type define kar di hai toh ERROR NHI AAYEGI kyoki bare minimum satisfied hai"
