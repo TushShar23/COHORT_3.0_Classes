@@ -91,3 +91,29 @@ console.log(u4);
 u4 = u3 ; // NO ERROR coz bare minimum properties are there.Assigned an undefined OBbject into a defined(type) object.
 
 console.log(u4);
+
+
+// DATA SPILTTING
+// This is just a practise which engineers/developers do for clarity
+
+type Item = {name: string, quantity: number};
+type Address = {Street: string, Pin: number};
+
+type Order = {
+    _Id: number,
+    _items: Item[],
+    Del_Address: Address
+}
+
+const o1: Order = {
+    _Id: 994123,
+    _items: [{name: "Chicken Kurkure Momos", quantity: 2},{name: "Chicken Shawarma", quantity: 5},{name: "Lebanese Chicken", quantity: 4}],
+    Del_Address: {Street: "24 street,near cambridge apartments", Pin: 908234}
+}
+
+function showOrder(order: Order){
+    console.log(order);
+}
+showOrder(o1);
+
+

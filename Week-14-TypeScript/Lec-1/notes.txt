@@ -270,3 +270,5 @@ Duck typing checks behavior at runtime ("if it quacks like a duck"), while struc
 > STRUCTURAL typing checks that is the STRUCTURE IS MAINTAINED or NOT ? IF YES then ok DOES NOT CARE ABOUT ADDITIONAL PROPERTIES,IF NO then throws error.IF BARE MINIMUM PROPERTY(s) is/are PRESENT then Structure is maintained and doesn’t matter what added after that
 BUT WE CANNOT GIVE THAT TYPE TO THE OBJECT/VARIABLE we are defining coz it has a structure AND WE ARE ADDING NEW PROPERTIES IN OUR OBJECT which will give error
 "mtlb hum ek object bnaaye uske ander woh bare minimum properties daale lekin type woh na de aur aur bhi properties daale baad mei uss object ka data uss dusre object mei daalde jiski type define kar di hai toh ERROR NHI AAYEGI kyoki bare minimum satisfied hai"
+
+> KEYWORDS : readonly, partial, required
