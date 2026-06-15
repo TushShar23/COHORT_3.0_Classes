@@ -272,3 +272,115 @@ BUT WE CANNOT GIVE THAT TYPE TO THE OBJECT/VARIABLE we are defining coz it has a
 "mtlb hum ek object bnaaye uske ander woh bare minimum properties daale lekin type woh na de aur aur bhi properties daale baad mei uss object ka data uss dusre object mei daalde jiski type define kar di hai toh ERROR NHI AAYEGI kyoki bare minimum satisfied hai"
 
 > KEYWORDS : readonly, partial, required
+
+> <T> is a generic placeholder that allows you to write code which works with any type while preserving type safety.
+<T> is a Generic Type Parameter
+
+  Think of it as a placeholder for a type.
+
+  Just like:
+
+  function add(a, b) {
+    return a + b;
+  }
+
+  Here a and b are placeholders for values.
+
+  Similarly:
+
+  function identity<T>(value: T): T {
+    return value;
+  }
+
+  Here T is a placeholder for a type.
+
+  function identity<T>(value: T): T {
+    return value;
+  }
+
+  Usage:
+
+  identity<string>("Tushar");
+  identity<number>(22);
+
+  TypeScript replaces T with:
+
+  string
+
+  or
+
+  number
+
+  respectively.
+
+  Without Generics
+  function identity(value: any): any {
+      return value;
+  }
+
+  Problem:
+
+  Type safety is lost
+  With Generics
+  function identity<T>(value: T): T {
+      return value;
+  }
+
+  TypeScript knows:
+
+  Input Type = Output Type
+  Why T?
+
+  T is just a convention.
+
+  You can write:
+
+  function identity<MyType>(value: MyType): MyType {
+      return value;
+  }
+
+  or
+
+  function identity<Data>(value: Data): Data {
+      return value;
+  }
+
+  These are all valid.
+
+  In Partial<T>
+  type User = {
+      name: string;
+      age: number;
+  }
+  Partial<User>
+
+  Here:
+
+  T = User
+
+  So TypeScript applies Partial to User.
+
+  Result:
+
+  {
+      name?: string;
+      age?: number;
+  }
+  Memory Trick
+  <T>
+  ↓
+  A variable for a type
+
+  Just like:
+  x = variable for a value
+
+  T = variable for a type
+  One-Line Definition
+
+  <T> is a generic placeholder that allows you to write code which works with any type while preserving type safety.
+
+  "Generics = "Type ko parameter ki tarah pass karna"
+
+> PARTIAL "mei dhyaan rakhne wali cheez ye hai ki bhai hum usme EMPTY OBJECT tak  PASS kar sakte hai which will create an issue to DHYAAN SE USE KARNA HAI"
+
+
