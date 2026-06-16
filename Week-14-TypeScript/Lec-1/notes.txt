@@ -381,6 +381,21 @@ BUT WE CANNOT GIVE THAT TYPE TO THE OBJECT/VARIABLE we are defining coz it has a
 
   "Generics = "Type ko parameter ki tarah pass karna"
 
-> PARTIAL "mei dhyaan rakhne wali cheez ye hai ki bhai hum usme EMPTY OBJECT tak  PASS kar sakte hai which will create an issue to DHYAAN SE USE KARNA HAI"
+> PARTIAL TYPE "mei dhyaan rakhne wali cheez ye hai ki bhai hum usme EMPTY OBJECT tak  PASS kar sakte hai which will create an issue to DHYAAN SE USE KARNA HAI"
+
+> REQUIRED TYPE "makes all the properties REQUIRED/NECESSARY even if they all are OPTIONAL"
+
+> PICK "hum selected properties pe hi kaam karte hai,mtlb type mei se SELECTED PROPERTIES hi chahiye hongi bs uske alawa aur kuch nhi" Pick<T,"K"> T is type and k is union of properties, Pick<NewChai,"name" | "price">
+
+Partial
+↓
+Keep ALL fields
+Make them OPTIONAL
+
+
+Pick
+↓
+Choose SOME fields
+Keep them REQUIRED
 
 
