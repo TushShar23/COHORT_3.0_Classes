@@ -398,6 +398,16 @@ Pick
 Choose SOME fields
 Keep them REQUIRED
 
-> ALWAYS put OPTIONAL PARAMETERS in the end of PARAMETERS LIST
+> ALWAYS put OPTIONAL PARAMETERS in the end of PARAMETERS LIST.
 
+> TUPLE
+ a tuple is an array with fixed size and known datatypes."Mtlb ke agar humne likha hai ki [string,number,string] toh ORDER WISE 1st pe string value 2nd pe number value and 3rd pe string value bs 3 hi define kari hai toh 3 hi values aayengi"
+
+ "agar humne 3 types define ki hai ek tuple mei toh CORRESPONDING 3 values hi aayengi na zyada na kam"
+ 
+ ORDER IS VERY IMPORTANT IN TUPLE WHEN IT COMES TO GIVE VALUES CORRESPONDING to the type defined
+
+ "HUM TS MEI TUPLE MEI PUSH() OPERATION PERFORM KAR SAKTE HAI AUR WOH CHALEGA BHI KYOKI END OF TEH DAY TS BREAKSDOWN TO JS AND TypeScript cannot truly enforce a fixed-length array at runtime.BUT THE CATCH IS THE EXTRA ELEMENT WILL NOT GET THE SPACE INSIDE THE TUPLE mtlb memory mei jgh nhi milegi sirf unhi elements ko milegi jo define kiye hai"YOU CANNOT ACCESS THE EXTRA ELEMENT COZ IT DOES NOT EXIST IN MEMORY. WOOOOWWWW!!!!
+
+ The structure of the tuple needs to stay the same (a string followed by a number), whereas the array can have any combination of the two types specified
 

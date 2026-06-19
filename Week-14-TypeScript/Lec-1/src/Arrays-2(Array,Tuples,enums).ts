@@ -82,4 +82,46 @@ console.log(noSize);
 
 
 // TUPLES
+// a tuple is an array with fixed size and known datatypes."Mtlb ke agar humne likha hai ki [string,number,string] toh ORDER WISE 1st pe string value 2nd pe number value and 3rd pe string value bs 3 hi define kari hai toh 3 hi values aayengi"
+
+// Declaration
+const primaryColors: [string,string,string] = ["red","green","blue"];
+console.log(primaryColors);
+console.log(primaryColors[1]);
+// "agar humne 3 types define ki hai ek tuple mei toh CORRESPONDING 3 values hi aayengi na zyada na kam"
+
+const MixTup: [string,number] = ["Okinawa",101];
+console.log(MixTup);
+MixTup.push("Hello");
+console.log(MixTup);
+
+// console.log(MixTup[2]); 
+// WE CANNOT ACCESS THE EXTRA ELEMENT BUT WE CAN PUT AN EXTRA ELEMENT IN A TUPLE BUT IT DOES NOT EXIST IN MEMORY 
+
+let chaiTuple: [string,number];
+chaiTuple = ["Masala",20]; // VALID ORDER
+// chaiTuple = [25,"green"]; // Invalid ORDER
+
+// OPTIONAL VALUE IN TUPLE
+let userInfo: [string, number, boolean?];
+userInfo = ["hitesh",42];
+userInfo = ["Tushar",23,true];
+// Boolean value is OPTIONAL 
+
+// READONLY TUPLE
+const location: readonly [number,number] = [38.67,23.88];
+// location.push(90.76) we cannot do this coz its a readonly tuple
+
+// NAMED TUPLE
+const ChaiItems: [name: string, price: number] = ["Masala",20];
+console.log(ChaiItems);
+ChaiItems.push("Green",25);
+console.log(ChaiItems);
+// console.log(ChaiItems[2]); In memory there is nothing like ("Green" and 25)
+
+
+
+
+
+
 
