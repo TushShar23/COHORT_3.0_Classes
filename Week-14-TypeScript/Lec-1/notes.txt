@@ -411,3 +411,13 @@ Keep them REQUIRED
 
  The structure of the tuple needs to stay the same (a string followed by a number), whereas the array can have any combination of the two types specified
 
+> PRIVATE doesn't mean the data can never be revealed. It means only the class itself decides how and when it can be accessed
+
+  The real purpose of private is:
+
+  Hide implementation details
+  +
+  Protect data from direct modification
+  +
+  Force users to interact through controlled methods
+

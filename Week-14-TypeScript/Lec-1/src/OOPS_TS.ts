@@ -23,7 +23,7 @@ console.log(masalaChai);
 
 // 1. PUBLIC(access anywhere)
 // 2. PRIVATE(limited to class ONLY)
-// 3. PROTECTED(mainly use in Inheritance)
+// 3. PROTECTED(mainly use in Inheritance)/STAFF DOOR ENTRY
 
 class MeriChai{
     public flavor: string = "Masala";
@@ -42,5 +42,26 @@ class MeriChai{
 
 const c = new MeriChai(); // We are not taking any value from user so thatswhy no need to pass any value.
 
-const val = c.reveal(); // c can't access this property but there is a method inside the class which can access this property and object can access this method.
+const val = c.reveal(); // c can't access this property directly but there is a method inside the class which can access this property and object can access this method.
 console.log(val);
+
+
+// PROTECTED
+
+class Shop{
+    protected shopName = "ChaiCorner";
+
+}
+
+class myShop extends Shop{
+    getName(){
+        return this.shopName;
+    }
+}
+
+const s1 = new myShop();
+const res = s1.getName();
+console.log(res);
+
+// 
+
