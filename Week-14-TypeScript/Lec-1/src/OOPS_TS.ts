@@ -63,5 +63,91 @@ const s1 = new myShop();
 const res = s1.getName();
 console.log(res);
 
-// 
+
+
+// TS SUPPORTS JS FORMATS
+
+// # = represents private field in JS but TS also supports this
+
+class Wallet{
+    #balance = 1000;
+
+    getBalance(){
+        return this.#balance; // THIS is how we access private fields declared using "#"
+    }
+}
+
+const w = new Wallet();
+const bal = w.getBalance();
+console.log(bal);
+
+// RECOMMENDED to use "traditional access modifiers like PUBLIC,PRIVATE and PROTECTED"
+
+// READONLY PROPS
+
+class Cup{
+    readonly Capacity: number = 250;
+
+    constructor(capacity: number){
+        this.Capacity = capacity;
+    }
+}
+
+const cupSize = new Cup(500);
+console.log(cupSize);
+
+// why i am able to reassign IN READONLY PROPERTY ?
+// The property can be assigned only once — either at declaration or inside the constructor.
+
+/*
+
+Why is constructor assignment allowed?
+
+Because when the object is being created:
+
+const cup = new Cup(500);
+
+the property hasn't been finalized yet.
+
+TypeScript allows:
+
+constructor(capacity: number) {
+    this.Capacity = capacity;
+}
+
+as the initial assignment.
+
+After construction finishes:
+
+cup.Capacity = 1000;
+
+❌ Not allowed.
+
+
+*/
+
+
+// GETTERS and SETTERS(Gateways)
+class ModernChai{
+    private _Sugar = 2; // its a convention to use _ with private field
+    
+    get Sugar(){
+        return this._Sugar;
+    }
+
+    set Sugar(value: number){
+        if(value > 5) throw new Error("Too Sweet! Not good for health"); // IT will throw an error when the "value" exceeds 5
+        this._Sugar = value;
+    }
+
+}
+
+const mc1 = new ModernChai();
+mc1.Sugar = 4;
+console.log(mc1);
+
+
+
+
+
 

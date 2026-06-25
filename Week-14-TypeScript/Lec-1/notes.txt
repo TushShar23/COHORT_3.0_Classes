@@ -421,3 +421,36 @@ Keep them REQUIRED
   +
   Force users to interact through controlled methods
 
+> JS does not have traditional access modifiers but WE USE "#"for showing strict PRIVATE FIELDS and methods and "_VARIABLE" convention for showing PROTECTED FIELDS
+BUT TS has access modifiers AND WE CAN ALSO USE "#" and "_VARIABLE" as at the end of the day it will convert into JS.
+
+
+
+> Why i am able to reassign IN READONLY PROPERTY ?
+The property can be assigned only once — either at declaration or inside the constructor.
+ 
+
+Why is constructor assignment allowed?
+
+Because when the object is being created:
+
+const cup = new Cup(500);
+
+the property hasn't been finalized yet.
+
+TypeScript allows:
+
+constructor(capacity: number) {
+    this.Capacity = capacity;
+}
+
+as the initial assignment.
+
+
+
+After construction finishes:
+
+cup.Capacity = 1000;
+
+❌ Not allowed.
+
