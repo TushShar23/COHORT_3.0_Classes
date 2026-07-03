@@ -454,3 +454,26 @@ cup.Capacity = 1000;
 
 ❌ Not allowed.
 
+
+Jab object banta hai:
+
+const cup = new Cup(500);
+
+Tab TypeScript bolta hai:
+
+Object abhi create ho raha hai
+Isliye readonly property ko value dena allowed hai
+
+> get and set KEYWORDS
+
+> STATIC members. STATIC MEMBERS are accessed using CLASSNAME.Static members are associated with THE CLASS NOT with the OBJECT OF the class.
+
+> this in TS is same as JS.
+
+> POLYMORPHISM - Polymorphism is the ability of the same method or function to perform different actions depending on the object or arguments.
+
+ In JavaScript and TypeScript, polymorphism works in two primary ways:
+
+  Method Overriding: A child class overrides a method of its parent class.Method overriding occurs when a subclass provides its own specific implementation of a method that is already defined in its parent class.
+
+  Method Overloading (simulated): A function behaves differently based on the number or type of its arguments.JavaScript does not support true method overloading, but it can be simulated by handling different numbers or types of arguments within a single function.
