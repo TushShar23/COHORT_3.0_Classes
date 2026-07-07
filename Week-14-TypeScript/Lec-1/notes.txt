@@ -565,4 +565,7 @@ Interfaces cannot do that.
 
 Interface      = Rules only
 Abstract Class = Rules + Some Code
-Polymorphism   = Same interface, different behavior
+Polymorphism   = Same interface, different behavior.
+
+
+
