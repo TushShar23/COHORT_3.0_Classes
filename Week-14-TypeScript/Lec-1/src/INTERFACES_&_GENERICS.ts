@@ -137,3 +137,49 @@ Polymorphism   = Same interface, different behavior
 
 
 */
+
+// INDEX SIGNATURES
+// In TypeScript, index signatures allow you to define object types with dynamic keys, where the keys can be of a specific type, and the corresponding values can be of another type.This is particularly USEFUL WHEN you want to WORK WITH OBJECTS that have properties that are not known at compile-time but follow a specific pattern.
+
+interface ChaiRatings{
+    [flavor: string]: number; // we have defined an object(key value pair)
+}
+
+const ratings: ChaiRatings = {
+    masala: 4.5,
+    green: 3.8,
+    lemon: 4.3
+
+    // ginger: "4.4" this is wrong coz flavor can be string but its signature(VALUE) should be number only
+}
+
+// MERGING IN INTERFACE
+// suppose there are two interfaces with the same name
+
+interface User{
+    name: string
+}
+
+interface User{
+    age: number
+}
+
+const u: User = {
+    // PROPERTIES OF BOTH THE USERS HAVE TO BE PRESENT HERE else IT WILL CREATE ERROR
+    name: "Tushar",
+    age: 22
+}
+// BOTH PROPERTIES HAVE TO BE PRESENT HERE.
+
+
+// EXTENDING INTERFACES
+interface A {a: string}
+interface B {b: string}
+
+interface C extends A,B{
+    a: "Hello",
+    b: "Priviett",
+    c: "Konnichiwa"
+}
+
+

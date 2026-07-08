@@ -567,5 +567,27 @@ Interface      = Rules only
 Abstract Class = Rules + Some Code
 Polymorphism   = Same interface, different behavior.
 
+> INDEX SIGNATURES
+In TypeScript, index signatures allow you to define object types with dynamic keys, where the keys can be of a specific type, and the corresponding values can be of another type.This is particularly USEFUL WHEN you want to WORK WITH OBJECTS that have properties that are not known at compile-time but follow a specific pattern.
+
+> MERGING IN INTERFACE
+suppose there are two interfaces with the same name
+
+interface User{
+    name: string
+}
+
+interface User{
+    age: number
+}
+
+const u: User = {
+    // PROPERTIES OF BOTH THE USERS HAVE TO BE PRESENT HERE else IT WILL CREATE ERROR
+    name: "Tushar",
+    age: 22
+}
+
+
+
 
 
