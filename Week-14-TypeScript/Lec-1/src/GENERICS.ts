@@ -30,7 +30,9 @@ function pair<A,B>(a: A,b: B): [A,B]{
     return [a,b];
     /// CANNOT WRITE [b,a] COZ WE HAVE ALREADY SPECIFIED the return format [A,B]
 }
-// BOTH DATATYPES CAN BE SAME.
+// function _name<T>(): [A,B]{} this is the return type of the function.
+
+// BOTH DATATYPES CAN BE SAME. A and B can be strings or number or boolean,custom type
 
 const p1 = pair("Key","value");
 const p2 = pair("Masala",20);
@@ -38,6 +40,50 @@ const p3 = pair("Tea",{flavor: "Ginger"});
 // const p3 = pair("Tea",{flavor: "Ginger"},30); INCORRECT coz we are returning only TWO THINGS.
 
 console.log(p1,p2,p3);
+
+
+
+// GENERIC INTERFACE 
+
+interface Box<T>{
+    content: T
+};
+// Here the T's value should be of SAME DATATYPE
+
+// T = STRING
+const b1: Box<string> = {content: "Hello World!"};
+const b2: Box<string> = {content: "Tushar"};
+// const b3: Box<string> = {content: 28} // this will generate error coz T's datatype should be same.
+
+console.log(b1,b2);
+
+// T = NUMBER
+const b4: Box<number> = {content: 10};
+const b5: Box<number> = {content: 23};
+
+console.log(b4,b5);
+
+// GENERICS supports PARTIAL,OMIT,REQUIRED...
+
+// EXAMPLE
+
+interface ApiPromise<T>{
+    status: number,
+    data: T
+}
+
+const res: ApiPromise<{flavor: string}> = {
+    status: 204,
+    data: {flavor: "Masala"}
+}
+
+console.log(res);
+
+
+// THIS IS HOW WE MAKE GENERICS
+
+
+
 
 
 
