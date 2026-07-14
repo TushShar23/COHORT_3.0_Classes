@@ -588,6 +588,9 @@ const u: User = {
 }
 
 
+> GENERICS
+
+
 
 
 

@@ -81,6 +81,8 @@ console.log(res);
 
 
 // THIS IS HOW WE MAKE GENERICS
+// BEST RESOURCE to learn about GENERICS is OFFICIAL DOCUMENTATION
+
 
 
 
