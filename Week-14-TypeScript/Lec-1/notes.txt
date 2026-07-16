@@ -129,6 +129,8 @@ Because sometimes you want to describe a shape without creating a class.
 
 The main reason interfaces exist is not because they don't take memory.
 
+In INTERFACES we cannot ACCESS THE MEMBER IN FUNCTION DEFINED IN THE INTERFACE UNLIKE CLASSES.
+
 The main reason is:
 To define and check the shape of data without needing a class.
 
@@ -588,7 +590,7 @@ const u: User = {
 }
 
 
-> GENERICS
+> GENERICS : READ FROM OFFICIAL DOCS and gpt
 
 
 
