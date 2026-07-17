@@ -589,6 +589,17 @@ const u: User = {
     age: 22
 }
 
+> BIN folder (/bin) contains the BINARY FILES generally and LIB folder(/lib) contains source code files.
+A bin (short for binary) folder contains the runnable, ready-to-use programs or apps. A lib (short for library) folder contains helper files, background code, and rules that those programs need to work properly.
+
+The bin folder is the finished meal you serve to your guests. You can eat it right away.
+The lib folder is the pantry full of raw spices, dough, and sauces.
+You can't eat the pantry, but the chef needs these helper items to make the meal
+
+.d = declaration file
+-D(FLAG) = used for showing DEV DEPENDENCY
+
+HUM KOI BHI EXTERNAL package DOWNLOAD KARTE HAI LIKE TypeScript,AXIOS AND ALL. TOH PACKAGE MEI HUME EK BIN FOLDER MILTA HAI AUR EK LIB FOLDER BIN MEI READY HOTA HAI SAB AUR LIB MEI SAB declaration FILES,HELPERS,ERRORS,HINTS YE SAB HOTE HAI JO HMAARI HELP KARTE HAI CODE LIKHNE MEI
 
 > GENERICS : READ FROM OFFICIAL DOCS and gpt
 
