@@ -601,9 +601,92 @@ You can't eat the pantry, but the chef needs these helper items to make the meal
 
 HUM KOI BHI EXTERNAL package DOWNLOAD KARTE HAI LIKE TypeScript,AXIOS AND ALL. TOH PACKAGE MEI HUME EK BIN FOLDER MILTA HAI AUR EK LIB FOLDER BIN MEI READY HOTA HAI SAB AUR LIB MEI SAB declaration FILES,HELPERS,ERRORS,HINTS YE SAB HOTE HAI JO HMAARI HELP KARTE HAI CODE LIKHNE MEI
 
+> WHENEVER YOU INSTALL AN EXTERNAL LIBRARY ALWAYS INSTALL THEIR TYPES TOO.
+>import type { AxiosResponse,isAxiosError } from "axios";
+// YOU have to USE "IMPORT TYPE" when you are importing types of any external library 
+
 > GENERICS : READ FROM OFFICIAL DOCS and gpt
 
 
 
+
+> Sometimes external libraries OR packages does not provide their TYPES so we install it using "npm install -D @types/LIB_NAME" or we configure it in declaration file(.d.ts)
+
+> WE ALSO IMPORT THE TYPES WHEN WORKING WITH WEB REQUESTS AND ALL.LIKE in "Axios" we have "AxiosResponse" which tells that the type of the datatype is "AxiosResponse" only like you can say these are datatypes inbuilt in the external data fetching libraries.
+
+Axios is a popular, open-source JavaScript library used to send HTTP requests from web browsers and Node.js environments. It is widely used by developers to communicate with APIs, as it simplifies tasks like fetching data, handling errors, and automatically transforming JSON data.
+
+
+
+> Why not just write Todo? WHY WE HAVE USED AXIOSREPSONSE<todo> ?   
+
+Because the response itself isn't a Todo.
+
+The response looks like this:
+
+{
+   data: Todo,
+   status: 200,
+   headers: ...
+}
+
+So
+
+AxiosResponse<Todo>
+
+means
+
+"This response object has a data property whose type is Todo."
+
+If you wrote
+
+const response: Todo
+
+that would be incorrect, because response also contains status, headers, config, etc.
+
+The generic tells TypeScript what's inside data.
+
+AxiosResponse<Todo> → data is a Todo.
+AxiosResponse<User> → data is a User.
+AxiosResponse<Product[]> → data is an array of Product.
+
+That's why AxiosResponse is generic: the wrapper is constant, but the payload (data) can be any type.
+
+We didn't make AxiosResponse<T>; Axios already provides it. We use AxiosResponse<T> to specify the type of the data field inside the response.
+We use AxiosResponse<T> because the data field can contain different types depending on the API, and the generic tells TypeScript exactly what type data is.
+
+
+
+
+> In JavaScript, ANY FUNCTION THAT DOES NOT EXPLICITLY RETURN A VALUE AUTOMATICALLY RETURNS UNDEFINED.
+function hello(){
+    return ("hello promise");
+}
+
+
+const p = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(hello())
+    }, 2000);
+});
+
+p.then((res)=>{
+    console.log(res);
+    // at first it was returning an extra "undefined" coz in js if a function expplicityy does not return anything then it returns UNDEFINED.We should execute the function here not in the "resolve()"
+})
+.catch((err)=>{
+    console.log(err);
+})
+
+
+1. resolve(hello()) -> Result मिलता हैयहाँ आप फ़ंक्शन को तुरंत चला देते हैं। फ़ंक्शन जो भी return करेगा (जैसे कोई text, number या object), वही .then() के पास जाएगा।.then(res) में क्या मिलेगा: फ़ंक्शन का आउटपुट (जैसे: "Success")।
+
+2. resolve(hello) -> Reference मिलता हैयहाँ फ़ंक्शन चलता नहीं है, बल्कि .then() के पास ट्रांसफर हो जाता है। .then() को फ़ंक्शन का केवल एक शॉर्टकट (Reference) मिलता है।.then(res) में क्या मिलेगा: पूरा फ़ंक्शन खुद function hello() { ... }।result देखने के लिए: आपको .then() के अंदर जाकर res() लिखकर उसे खुद चलाना पड़ेगा।
+
+
+
+> Read about Axios too.
+> computer networks and how internet works
+> Error in JS(ERROR OBJECT)
 
 
