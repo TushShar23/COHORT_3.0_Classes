@@ -690,3 +690,63 @@ p.then((res)=>{
 > Error in JS(ERROR OBJECT)
 
 
+> External libraries provide their own types (or type definitions), which help TypeScript understand how the library works and make our code safer and easier to write.
+For example, AXIOS provides types like:
+
+AxiosResponse<T>
+AxiosError<T>
+AxiosRequestConfig
+
+REACT provides:
+
+ReactNode
+ReactElement
+FC
+ChangeEvent
+
+EXPRESS provides:
+
+Request
+Response
+NextFunction
+
+These are types, not JavaScript data types like string or number. They describe the shape of objects used by the library.
+
+
+> What does AxiosResponse<Todo> mean?
+
+Internally, Axios has something like this:
+
+interface AxiosResponse<T> {
+    data: T;
+    status: number;
+    headers: any;
+}
+
+When you write:
+
+AxiosResponse<Todo>
+
+TypeScript replaces T with Todo:
+
+interface AxiosResponse {
+    data: Todo;
+    status: number;
+    headers: any;
+}
+
+So now:
+
+response.data
+
+is of type:
+
+Todo
+
+which means VS Code knows:
+
+response.data.id         // number
+response.data.title      // string
+response.data.completed  // boolean
+
+

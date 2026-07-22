@@ -111,6 +111,46 @@ That's why AxiosResponse is generic: the wrapper is constant, but the payload (d
 
 
 
+What does AxiosResponse<Todo> mean?
+
+Internally, Axios has something like this:
+
+interface AxiosResponse<T> {
+    data: T;
+    status: number;
+    headers: any;
+}
+
+When you write:
+
+AxiosResponse<Todo>
+
+TypeScript replaces T with Todo:
+
+interface AxiosResponse {
+    data: Todo;
+    status: number;
+    headers: any;
+}
+
+So now:
+
+response.data
+
+is of type:
+
+Todo
+
+which means VS Code knows:
+
+response.data.id         // number
+response.data.title      // string
+response.data.completed  // boolean
+
+
+
+
+
 
 
 
