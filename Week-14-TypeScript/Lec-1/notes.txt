@@ -683,13 +683,6 @@ p.then((res)=>{
 
 2. resolve(hello) -> Reference मिलता हैयहाँ फ़ंक्शन चलता नहीं है, बल्कि .then() के पास ट्रांसफर हो जाता है। .then() को फ़ंक्शन का केवल एक शॉर्टकट (Reference) मिलता है।.then(res) में क्या मिलेगा: पूरा फ़ंक्शन खुद function hello() { ... }।result देखने के लिए: आपको .then() के अंदर जाकर res() लिखकर उसे खुद चलाना पड़ेगा।
 
-
-
-> Read about Axios too.
-> computer networks and how internet works
-> Error in JS(ERROR OBJECT)
-
-
 > External libraries provide their own types (or type definitions), which help TypeScript understand how the library works and make our code safer and easier to write.
 For example, AXIOS provides types like:
 
@@ -748,5 +741,14 @@ which means VS Code knows:
 response.data.id         // number
 response.data.title      // string
 response.data.completed  // boolean
+
+
+
+> Read about Axios too.
+> computer networks and how internet works
+> Error in JS(ERROR OBJECT)
+> Linter vs compiler vs interpreter 
+
+>Use Named Exports for almost everything (components, helper functions, hooks, utilities). It keeps your TypeScript project structure strict, uniform, and self-documenting.
 
 
