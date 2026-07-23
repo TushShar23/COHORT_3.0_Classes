@@ -1,5 +1,6 @@
 import './App.css'
 import {ChaiCard} from "../Components/ChaiCard.tsx"
+import {CounterTs} from "../Components/Counter.tsx"
 
 function App() {
   return (
@@ -21,6 +22,16 @@ function App() {
           name= {"Samsung Fold 6"}
           price= {170000}
         />
+        <ChaiCard 
+          name= {"Apple watch series 6"}
+          price= {95000}
+          isSpecial= {true}
+        />
+
+        <br />
+
+        <CounterTs />
+        
       </div>
     </>
   )
