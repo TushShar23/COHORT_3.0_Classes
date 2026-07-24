@@ -148,7 +148,77 @@ response.data.title      // string
 response.data.completed  // boolean
 
 
+Why did TypeScript introduce import type?
 
+To make it crystal clear whether you're importing:
+
+✅ a runtime value (import)
+✅ a compile-time type (import type)
+
+This helps:
+
+avoid runtime import errors,
+improve tree shaking,
+make the compiled JavaScript smaller and cleaner.
+One-line summary
+
+Use import type because types exist only during compilation, not at runtime. It tells TypeScript to use the import for type checking only and remove it from the generated JavaScript.
+
+
+
+
+
+
+First, remember this:
+
+TypeScript types do not exist at runtime.
+
+For example:
+
+interface User {
+    name: string;
+}
+
+When TypeScript compiles this to JavaScript:
+
+// Nothing!
+
+The interface disappears.
+
+What does import do?
+
+When you write:
+
+import { axios } from "axios";
+
+you're telling JavaScript:
+
+"At runtime, bring me this value from the module."
+
+For example:
+
+import axios from "axios";
+
+axios.get(...)
+
+Here axios is a real JavaScript object.
+
+But what about AxiosResponse?
+import type { AxiosResponse } from "axios";
+
+AxiosResponse is only a type.
+
+It exists only while TypeScript is checking your code.
+
+After compilation:
+
+const response: AxiosResponse<Todo> = ...
+
+becomes
+
+const response = ...
+
+Notice the type disappeared.
 
 
 
